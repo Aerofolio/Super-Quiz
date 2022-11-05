@@ -1,4 +1,5 @@
 #pragma warning(disable : 4996)
+#pragma warning(disable : 6031)
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
