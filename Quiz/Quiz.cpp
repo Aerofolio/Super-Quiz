@@ -42,6 +42,9 @@ void AlteraPerguntasGeradas(Configuracoes *configuracoes);
 #pragma endregion
 
 //Constantes Globais
+const int ValorInicialSegundos = 30;
+const int ValorInicialPerguntas = 10;
+const bool ValorInicialPerguntasGeradas = true;
 #pragma region Constantes de Código de Cor
 
 const int CodigoDeCorTexto = 15; //Branco
@@ -57,7 +60,7 @@ int main()
 	setlocale(0, "portuguese");
 
 	int opcaoMenu;
-	Configuracoes configuracoes = { 30, 10, true };
+	Configuracoes configuracoes = { ValorInicialSegundos, ValorInicialPerguntas, ValorInicialPerguntasGeradas };
 	
 	do {
 		ImprimeMenuPrincipal();
