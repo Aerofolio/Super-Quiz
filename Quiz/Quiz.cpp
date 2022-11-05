@@ -87,7 +87,7 @@ int main()
 }
 
 //Sempre que utilizar a função printf colocar a função nessa área
-//Sempre que escrever qualquer coisa colocar nessa área
+//Sempre que escrever qualquer coisa no console colocar nessa área
 //Nunca imprimir algo no meio do código
 #pragma region Funções que Imprimem no Dados no Console
 
