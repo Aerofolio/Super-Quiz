@@ -6,6 +6,8 @@
 #include <locale.h>
 #include <string.h>
 #include <windows.h>
+#include <time.h>
+#include <stdlib.h>
 
 //Structs
 typedef struct {
@@ -90,7 +92,7 @@ const int CodigoCorDestaque = 10;//Verde
 int main()
 {
 	setlocale(0, "portuguese");
-
+	srand(time(NULL));//Ajusta o seed dos números aleatórios de acordo com a hora
 	int opcaoMenu;
 	Configuracoes configuracoes = { ValorInicialSegundos, ValorInicialPerguntas, ValorInicialPerguntasGeradas };
 	
@@ -301,7 +303,7 @@ void ImprimeEnunciado(Pergunta pergunta) {
 	else {
 		printf(pergunta.Enunciado);
 	}
-	printf("\n\nResposta: ");
+	printf("\n\nDigite a resposta ou 0 para pular: ");
 }
 
 void ImprimeDica(Pergunta pergunta) {
@@ -382,6 +384,10 @@ void MenuOpcao1(Configuracoes configuracoes) {
 				if (respostaLida == pergunta.RespostaMatematica) {
 					errou = false;
 					ImprimeRespostaCerta();
+					break;
+				}
+				else if (respostaLida == 0) {
+					//não soma nada a pontuação
 					break;
 				}
 				else {
