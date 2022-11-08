@@ -14,6 +14,28 @@ typedef struct {
 	bool PerguntasGeradas;
 }Configuracoes;
 
+typedef struct {
+	char* Enunciado;
+	char* Dica;
+	char* OpcaoA;
+	char* OpcaoB;
+	char* OpcaoC;
+	char* OpcaoD;
+	char* OpcaoE;
+	char Resposta;
+	int Numero1;
+	int Numero2;
+	int RespostaMatematica;
+	char Operacao;
+	bool PerguntaGerada;
+}Pergunta;
+
+typedef struct {
+	int Numero1;
+	int Numero2;
+	char Operacao;
+}Dica;
+
 #pragma region Declaração de Funções
 
 void ImprimeMenuPrincipal();
@@ -23,6 +45,11 @@ void ImprimeErroSegundos();
 void ImprimeCabecalho(char titulo[]);
 void ImprimeErroPerguntas();
 void ImprimeErroPerguntasMatematicas();
+void ImprimePergunta(int numeroPergunta);
+void ImprimeEnunciado(Pergunta pergunta);
+void ImprimeDica(Pergunta pergunta);
+void ImprimeRepostaErrada();
+void ImprimeRespostaCerta();
 
 void ImprimeMenu3(Configuracoes configuracoes);
 void ImprimeMenu3Segundos(int valorAntigo);
@@ -32,9 +59,12 @@ void ImprimeMenu3PerguntasMatematica(bool valorAntigo);
 void Continuar();
 void MudaCorDoConsole(int codigoCor);
 
-void MenuOpcao1();
+void MenuOpcao1(Configuracoes configuracoes);
 void MenuOpcao2();
 void MenuOpcao3(Configuracoes *configuracoes);
+
+Pergunta GeradorDePerguntas();
+Dica GeradorDeDicas(Pergunta pergunta);
 
 void AlteraSegundosDeResposta(Configuracoes *configuracoes);
 void AlteraNumeroDePerguntas(Configuracoes *configuracoes);
@@ -46,6 +76,7 @@ void AlteraPerguntasGeradas(Configuracoes *configuracoes);
 const int ValorInicialSegundos = 30;
 const int ValorInicialPerguntas = 10;
 const bool ValorInicialPerguntasGeradas = true;
+const char* NomeDoJogo = "Super Quiz do Gustavo e do Paulo";
 #pragma region Constantes de Código de Cor
 
 const int CodigoDeCorTexto = 15; //Branco
@@ -72,7 +103,7 @@ int main()
 			case 0:
 				return 0;
 			case 1:
-				MenuOpcao1();
+				MenuOpcao1(configuracoes);
 				break;
 			case 2:
 				MenuOpcao2();
@@ -92,7 +123,7 @@ int main()
 #pragma region Funções que Imprimem no Dados no Console
 
 void ImprimeMenuPrincipal() {
-	ImprimeCabecalho((char*)"Super Quiz do Gustavo e do Paulo!");
+	ImprimeCabecalho((char*)NomeDoJogo);
 
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
@@ -253,6 +284,51 @@ void ImprimeMenu3PerguntasMatematica(bool valorAntigo) {
 	printf("Digite se deseja ver perguntas matemáticas (V/F): ");
 }
 
+void ImprimePergunta(int numeroPergunta) {
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("Pergunta");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf(" %d", numeroPergunta + 1);
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf(":\n\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
+void ImprimeEnunciado(Pergunta pergunta) {
+	if (pergunta.PerguntaGerada) {
+		printf("%d %c %d = ??", pergunta.Numero1, pergunta.Operacao, pergunta.Numero2);
+	}
+	else {
+		printf(pergunta.Enunciado);
+	}
+	printf("\n\nResposta: ");
+}
+
+void ImprimeDica(Pergunta pergunta) {
+	MudaCorDoConsole(CodigoCorDestaque);
+	printf("Dica: ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	if (pergunta.PerguntaGerada) {
+		Dica dica = GeradorDeDicas(pergunta);
+		printf("%d %c %d = ??\n\n", dica.Numero1, dica.Operacao, dica.Numero2 );
+	}
+	else {
+		printf("%s\n\n", pergunta.Dica);
+	}
+}
+
+void ImprimeRepostaErrada() {
+	MudaCorDoConsole(CodigoCorErro);
+	printf("Resposta errada! Tente Novamente.\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
+void ImprimeRespostaCerta() {
+	MudaCorDoConsole(CodigoCorDestaque);
+	printf("Resposta correta! Parabéns!.\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
 #pragma endregion
 
 #pragma region Outras Funções
@@ -273,9 +349,54 @@ void Continuar() {
 
 #pragma region Funções das opções do menu
 
-void MenuOpcao1() {
-	printf("Opção escolhida: 1\n");
-	Continuar();
+void MenuOpcao1(Configuracoes configuracoes) {
+	for (int i = 0; i < configuracoes.NumeroDePerguntas; i++) {
+		Pergunta pergunta;
+		int tipoDePergunta = rand() % 2;
+		bool errou = false;
+		
+		if (configuracoes.PerguntasGeradas && 1 == 1) {
+			pergunta = GeradorDePerguntas();
+			
+			//pegunta gerada
+			//Funcao que gera a pergunta, manda a pergunta pointer como paramentro 
+		}
+		else {
+			//pergunta do arquivo
+			//funcção que pega a pergunta do arquivo, manda a pergunta como pointer 
+		}
+
+		do {
+			ImprimeCabecalho((char*)NomeDoJogo);
+			ImprimePergunta(i);
+			if (errou) {
+				ImprimeDica(pergunta);
+			}
+			ImprimeEnunciado(pergunta);
+
+			if (pergunta.PerguntaGerada) {
+				int respostaLida;
+				scanf("%d", &respostaLida);
+				system("CLS");
+
+				if (respostaLida == pergunta.RespostaMatematica) {
+					errou = false;
+					ImprimeRespostaCerta();
+					break;
+				}
+				else {
+					errou = true;
+					ImprimeRepostaErrada();
+					continue;
+				}
+			}
+			else {
+				char respostaLida;
+				//respota do arquivo
+			}
+		} while (true);
+		//bool pra erros, caso true imprime a dica
+	}
 }
 
 void MenuOpcao2() {
@@ -312,6 +433,53 @@ void MenuOpcao3(Configuracoes *configuracoes) {
 #pragma endregion
 
 #pragma region Funções do Menu 1
+
+Pergunta GeradorDePerguntas() {
+	const int LimitadorNumeros = 100;
+	Pergunta perguntaGerada;
+	int operacao = rand() % 3;
+
+	perguntaGerada.PerguntaGerada = true;
+	perguntaGerada.Numero1 = 1 + rand() % LimitadorNumeros;
+	perguntaGerada.Numero2 = 1 + rand() % LimitadorNumeros;
+
+	switch (operacao) {
+	case 0:
+		perguntaGerada.Operacao = '*';
+		perguntaGerada.RespostaMatematica = perguntaGerada.Numero1 * perguntaGerada.Numero2;
+		break;
+	case 1:
+		perguntaGerada.Operacao = '+';
+		perguntaGerada.RespostaMatematica = perguntaGerada.Numero1 + perguntaGerada.Numero2;
+		break;
+	case 2:
+		perguntaGerada.Operacao = '-';
+		perguntaGerada.RespostaMatematica = perguntaGerada.Numero1 - perguntaGerada.Numero2;
+		break;
+	}
+
+	return perguntaGerada;
+}
+
+Dica GeradorDeDicas(Pergunta pergunta) {
+	const int LimitadorDeOperacao = 2;
+	Dica dica;
+	int LimitadorDeNumeros = pergunta.RespostaMatematica - 1;
+	
+	dica.Operacao = rand() % LimitadorDeOperacao;
+	dica.Numero1 = rand() % LimitadorDeNumeros;
+
+	if (dica.Operacao == 1) {
+		dica.Operacao = '+';
+		dica.Numero2 = pergunta.RespostaMatematica - dica.Numero1;
+	}
+	else {
+		dica.Operacao = '-';
+		dica.Numero2 = pergunta.RespostaMatematica + dica.Numero1;
+	}
+
+	return dica;
+}
 
 #pragma endregion
 

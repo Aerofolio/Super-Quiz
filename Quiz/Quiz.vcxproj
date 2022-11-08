@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="Quiz.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ideias.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

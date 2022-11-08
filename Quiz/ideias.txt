@@ -1,0 +1,90 @@
+A fazer/corrigir:
+	- Números aleatórios não estão tão aleatórios.
+
+Outros:
+	- Usar textos coloridos.
+	- Decidir nome do jogo.
+	- Decidir estilos do menu.
+	- Todas as telas possuirão cabeçalho.
+	- Caso de tempo podemos criar um cadastro de perguntas.
+	- Tentar mudar a cor do Timer de acordo com quantos % do tempo faltam: verde: entre 60% e 100%, amarelo 20% e 59%, vermelho o resto.
+	- Verificar com a neiva se é necessário ficar verificando linha por linha dos arquivos se eles atendem ao schema, teoricamente ninguem deveria mudar eles a não ser o próprio programa, então n teeria como ter erros, e seria bem chato de verificar tudo!
+
+Funcionalidades:
+
+	- Menu Principal:
+		- Deverá conter 4 opções: 1 - Iniciar, 2 - Scoreboard, 3 - Configurações, 0 - Sair
+		- O usuário podera escolher qual quer número dos citados acima, se a entrada for diferente de um desses números deverá ser mostrado um erro em tela.
+		- É a primeira tela que o usuário vê.
+		- Aqui o cabeçalho mostra o nome do jogo.
+
+	- Opção 1 - Iniciar:
+		- Ao iniciar o jogador será levado para as perguntas, este tela deve conter: Cabeçalho, Número da pergunta, pontuação do jogador, perguntas, alternativas(caso não seja uma pergunta matematica), tempo restante.
+		- Deverá ser diposto um timer em tela em segundos, o timer reinicia a cada perguta, seu valor base é igual o que esta na configuração.
+		- Antes de selecionar a pergunta sera randomizado se ela sera uma pergunta do arquivo ou uma pergunta gerada aleatoria.
+		- O jogador poderá responder a pergunta, em casos de perguntas de alternativa ele podera escolher entre (A, B, C, D, E), outra letra resultara em erro em tela
+		- O jogador poderá responder a pergunta, em casos de perguntas geradas ele deverá responder o resultado da equação matemática mostrada em tela
+		- O jogador poderá pular a pergunta, assim ganhando 0 pontos por ela
+		- O tempo resntante dd quando o jogador acertar a pergunta será a quantidade de pontos que a pergunta somara ao final
+		- O número de perguntas é de acordo com a configuração do jogador
+		- Caso o jogador esteja com a configuração de perguntas matematicas desativada deverão aparecer apenas perguntas do arquivo.
+		- Caso o jogador erre uma tentativa será mostrado uma dica para a resposta.
+		- Caso o tempo chegue em 0 a pergunta passa automaticamente.
+		- Ao finalizar a ultima pergunta é mostrado a pontuação do jogador
+		- Caso o jogador queira ele pode informar seu nome para ter sua pontação salva no arquivo do scoreboard.
+		
+		- Perguntas geradas Matematicamente:
+			- Serão sorteados dois números inteiros de 0 a 100.
+			- Será sorteado uma operação matematica(+, -, *). Sem a opção de divisão pois queremos evitar números quebrados.
+			- A dica gerada será outra operação que resulte no mesmo resultado 
+				- Para gerar a dica sera randomizado um número de 0 a 100, e uma operação (+ ou -), sera calculado dessa maneira: numero1 +- numeroaleatorio = resultado, eentão será fisposto na tela: "numero1 +- numero aleatorio = ?"
+			- Será calculado a respota para o computador comparar com a resposta do jogador
+
+			
+		- Perguntas do arquivo:
+			- Existira um aruqivo chamado "perguntas.txt" no mesmo diretório do executável do programa.
+			- Nesse aquivo o usuário podera escrever perguntas que ele deseja que aparecam no quiz.
+			- O formato desse arquivo será:
+				- "Texto Pergunta"; "Texto dica"; "Texto Alternativa A"; "Texto Alternativa B"; "Texto Alternativa C"; "Texto Alternativa D"; "Texto Alternativa E"; "Letra Alternativa Correta"
+			- Será sorteado uma linha aleatoriamente, a linha será lida e se ela atender o schema acima a pergunta ira aparecer em tela;
+			
+	
+	- Opção 2 - Scoreboard:
+		- Este menu levará o jogador a uma nova tela.
+		- Será disposta uma lista de até 10 linhas, aonde cada linha possui as informações: Nome do jogador, Pontos.
+		- Caso o usuário pressione qualquer tecla ele voltara ao menu principal do jogo.
+		- As informações serão lidas de um arquivo chamado "scoreboard.txt".
+		- Deverão ser lidas todas as linhas do arquivo, e elas devem ser odenadas decrscentemente, serão utilizados para o scoreboard o top 10
+		- As linhas deverão possuir o seguinte schema:
+			- "Nome do Jogador";"Pontuação do jogador";
+		- Se a linha lida não estiver nesse formato ela deve ser ignorada.
+		- Se não existirem linhas nesse formato o scoreboard deve com uma mensagem "Ainda não existem recordes registrados! Termine uma partida para ter seu nome aqui.".
+		
+		
+	
+	- Opção 3 - Configurações:
+		- Aqui e em todos os submenus o cabeçalho mostra "configurações".
+		- Levará o usuário a outro menu, este que disponibilizara as configurações do jogo: 1 - Tempo de Reposta, 2 - Número de perguntas, 3 - Perguntas geradas automaticamente, 0 - Volta.
+		- Ao escolher qualquer uma das opçoes menos 0: leverá o jogador a outra tela contendo a configuração selecionada, o valor atual, e será pedido um novo valor para a configuração.
+		- Ao escolher 0 deverá levar o usuário de volta ao menu principal.
+		- As configurações serão salvas em um arquivo "config.txt", localizado no mesmo diretório do executável do programa.
+		- Por padrão o arquivo deverá conter 3 linhas, sedo a ordem dos valores a mesma da configuração do menu.
+		- As configurações base serão: 30 segundos, 10 perguntas, verdadeiro.
+		- Caso o arquivo possua mais de 3 linhas as outras linhas devem ser ignoradas.
+		- Caso o arquivo possua menos de 3 linhas a configuração faltante deverá ser iniciada com o valor padrão.
+		- Caso o conteúdo da linha não seja um número ou a palavra true/false a linha deverá ser configurada para o valor padrão.
+		- Caso o arquivo esteja vazio ele deverá ser sobreescrito com os valores padrão das configurações.
+		
+		- Configuração de tempo de resposta:
+			- O usuário deverá escolher um número em segundos maior ou igual a 10, se ele escolher um número menor que 10 deverá ser msotrado um erro em tela.
+		- Configuração de número de perguntas:
+			- O usuário deverá escolher um número de perguntas maior ou igual a 5, se ele escolher um número menor que 5 deverá ser msotrado um erro em tela.
+		- Configuração de perguntas geradas automaticamente:
+			- O usuário deverá escolher entre V para verdadeiro e F para falso, se ele digitar outra letra deverá ser mostrado um erro em tela.
+			- O usuário precisara digitar Enter para confirmar a mudança, caso ele escreva uma palavra será considerado apenas a primeira letra.
+			- O programa deve considerar tanto letras minusculas como maiusculas como válidas para a alteração.
+		
+		- Caso o valor das configurações do arquivo não respeite as regras citadas acima o valor deverá ser alterado para o padrão.
+		
+	- Opção 0 - Sair:
+		- Deverá encerrar a execução do programa.
