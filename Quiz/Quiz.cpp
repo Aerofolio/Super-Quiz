@@ -327,7 +327,7 @@ void ImprimeRepostaErrada() {
 
 void ImprimeRespostaCerta() {
 	MudaCorDoConsole(CodigoCorDestaque);
-	printf("Resposta correta! Parabéns!.\n");
+	printf("Resposta correta! Parabéns!\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
