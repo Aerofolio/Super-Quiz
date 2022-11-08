@@ -78,7 +78,7 @@ void AlteraPerguntasGeradas(Configuracoes *configuracoes);
 const int ValorInicialSegundos = 30;
 const int ValorInicialPerguntas = 10;
 const bool ValorInicialPerguntasGeradas = true;
-const char* NomeDoJogo = "Super Quiz do Gustavo e do Paulo";
+const char* NomeDoJogo = "Super Quiz do Gustavo e do Paulo!";
 #pragma region Constantes de Código de Cor
 
 const int CodigoDeCorTexto = 15; //Branco

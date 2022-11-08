@@ -12,11 +12,11 @@ Outros:
 
 Funcionalidades:
 
-	- Menu Principal:
-		- Deverá conter 4 opções: 1 - Iniciar, 2 - Scoreboard, 3 - Configurações, 0 - Sair
-		- O usuário podera escolher qual quer número dos citados acima, se a entrada for diferente de um desses números deverá ser mostrado um erro em tela.
-		- É a primeira tela que o usuário vê.
-		- Aqui o cabeçalho mostra o nome do jogo.
+	- *Menu Principal:
+		- *Deverá conter 4 opções: 1 - Iniciar, 2 - Scoreboard, 3 - Configurações, 0 - Sair
+		- *O usuário podera escolher qual quer número dos citados acima, se a entrada for diferente de um desses números deverá ser mostrado um erro em tela.
+		- *É a primeira tela que o usuário vê.
+		- *Aqui o cabeçalho mostra o nome do jogo.
 
 	- Opção 1 - Iniciar:
 		- Ao iniciar o jogador será levado para as perguntas, este tela deve conter: Cabeçalho, Número da pergunta, pontuação do jogador, perguntas, alternativas(caso não seja uma pergunta matematica), tempo restante.
@@ -33,12 +33,12 @@ Funcionalidades:
 		- Ao finalizar a ultima pergunta é mostrado a pontuação do jogador
 		- Caso o jogador queira ele pode informar seu nome para ter sua pontação salva no arquivo do scoreboard.
 		
-		- Perguntas geradas Matematicamente:
-			- Serão sorteados dois números inteiros de 0 a 100.
-			- Será sorteado uma operação matematica(+, -, *). Sem a opção de divisão pois queremos evitar números quebrados.
-			- A dica gerada será outra operação que resulte no mesmo resultado 
-				- Para gerar a dica sera randomizado um número de 0 a 100, e uma operação (+ ou -), sera calculado dessa maneira: numero1 +- numeroaleatorio = resultado, eentão será fisposto na tela: "numero1 +- numero aleatorio = ?"
-			- Será calculado a respota para o computador comparar com a resposta do jogador
+		- *Perguntas geradas Matematicamente:
+			- *Serão sorteados dois números inteiros de 1 a 100.
+			- *Será sorteado uma operação matematica(+, -, *). Sem a opção de divisão pois queremos evitar números quebrados.
+			- *A dica gerada será outra operação que resulte no mesmo resultado 
+				- *Para gerar a dica sera randomizado um número de 0 a 100, e uma operação (+ ou -), sera calculado dessa maneira: numero1 +- numeroaleatorio = resultado, eentão será fisposto na tela: "numero1 +- numero aleatorio = ?"
+			- *Será calculado a respota para o computador comparar com a resposta do jogador
 
 			
 		- Perguntas do arquivo:
@@ -63,10 +63,10 @@ Funcionalidades:
 		
 	
 	- Opção 3 - Configurações:
-		- Aqui e em todos os submenus o cabeçalho mostra "configurações".
-		- Levará o usuário a outro menu, este que disponibilizara as configurações do jogo: 1 - Tempo de Reposta, 2 - Número de perguntas, 3 - Perguntas geradas automaticamente, 0 - Volta.
-		- Ao escolher qualquer uma das opçoes menos 0: leverá o jogador a outra tela contendo a configuração selecionada, o valor atual, e será pedido um novo valor para a configuração.
-		- Ao escolher 0 deverá levar o usuário de volta ao menu principal.
+		- *Aqui e em todos os submenus o cabeçalho mostra "configurações".
+		- *Levará o usuário a outro menu, este que disponibilizara as configurações do jogo: 1 - Tempo de Reposta, 2 - Número de perguntas, 3 - Perguntas geradas automaticamente, 0 - Volta.
+		- *Ao escolher qualquer uma das opçoes menos 0: leverá o jogador a outra tela contendo a configuração selecionada, o valor atual, e será pedido um novo valor para a configuração.
+		- *Ao escolher 0 deverá levar o usuário de volta ao menu principal.
 		- As configurações serão salvas em um arquivo "config.txt", localizado no mesmo diretório do executável do programa.
 		- Por padrão o arquivo deverá conter 3 linhas, sedo a ordem dos valores a mesma da configuração do menu.
 		- As configurações base serão: 30 segundos, 10 perguntas, verdadeiro.
@@ -75,16 +75,19 @@ Funcionalidades:
 		- Caso o conteúdo da linha não seja um número ou a palavra true/false a linha deverá ser configurada para o valor padrão.
 		- Caso o arquivo esteja vazio ele deverá ser sobreescrito com os valores padrão das configurações.
 		
-		- Configuração de tempo de resposta:
-			- O usuário deverá escolher um número em segundos maior ou igual a 10, se ele escolher um número menor que 10 deverá ser msotrado um erro em tela.
-		- Configuração de número de perguntas:
-			- O usuário deverá escolher um número de perguntas maior ou igual a 5, se ele escolher um número menor que 5 deverá ser msotrado um erro em tela.
-		- Configuração de perguntas geradas automaticamente:
-			- O usuário deverá escolher entre V para verdadeiro e F para falso, se ele digitar outra letra deverá ser mostrado um erro em tela.
+		- *Configuração de tempo de resposta:
+			- *O usuário deverá escolher um número em segundos maior ou igual a 10, se ele escolher um número menor que 10 deverá ser msotrado um erro em tela.
+		- *Configuração de número de perguntas:
+			- *O usuário deverá escolher um número de perguntas maior ou igual a 5, se ele escolher um número menor que 5 deverá ser msotrado um erro em tela.
+		- *Configuração de perguntas geradas automaticamente:
+			- *O usuário deverá escolher entre V para verdadeiro e F para falso, se ele digitar outra letra deverá ser mostrado um erro em tela.
 			- O usuário precisara digitar Enter para confirmar a mudança, caso ele escreva uma palavra será considerado apenas a primeira letra.
-			- O programa deve considerar tanto letras minusculas como maiusculas como válidas para a alteração.
+			- *O programa deve considerar tanto letras minusculas como maiusculas como válidas para a alteração.
 		
 		- Caso o valor das configurações do arquivo não respeite as regras citadas acima o valor deverá ser alterado para o padrão.
 		
-	- Opção 0 - Sair:
-		- Deverá encerrar a execução do programa.
+	- *Opção 0 - Sair:
+		- *Deverá encerrar a execução do programa.
+
+Legenda:
+	- Itens com "*" já estão concluídos.
