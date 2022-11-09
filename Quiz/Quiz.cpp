@@ -60,6 +60,7 @@ void ImprimeMenu3PerguntasMatematica(bool valorAntigo);
 
 void Continuar();
 void MudaCorDoConsole(int codigoCor);
+int RetornaNumeroAleatorioEntre(int min, int max);
 
 void MenuOpcao1(Configuracoes configuracoes);
 void MenuOpcao2();
@@ -347,6 +348,11 @@ void Continuar() {
 	system("CLS");
 }
 
+int RetornaNumeroAleatorioEntre(int min, int max) {
+	max += 1;
+	return min + rand() % (max - (min));
+}
+
 #pragma endregion
 
 #pragma region Funções das opções do menu
@@ -354,7 +360,7 @@ void Continuar() {
 void MenuOpcao1(Configuracoes configuracoes) {
 	for (int i = 0; i < configuracoes.NumeroDePerguntas; i++) {
 		Pergunta pergunta;
-		int tipoDePergunta = rand() % 2;
+		int tipoDePergunta = RetornaNumeroAleatorioEntre(0,1);
 		bool errou = false;
 		
 		if (configuracoes.PerguntasGeradas && 1 == 1) {
@@ -441,13 +447,12 @@ void MenuOpcao3(Configuracoes *configuracoes) {
 #pragma region Funções do Menu 1
 
 Pergunta GeradorDePerguntas() {
-	const int LimitadorNumeros = 100;
 	Pergunta perguntaGerada;
-	int operacao = rand() % 3;
+	int operacao = RetornaNumeroAleatorioEntre(0, 2);
 
 	perguntaGerada.PerguntaGerada = true;
-	perguntaGerada.Numero1 = 1 + rand() % LimitadorNumeros;
-	perguntaGerada.Numero2 = 1 + rand() % LimitadorNumeros;
+	perguntaGerada.Numero1 = RetornaNumeroAleatorioEntre(1, 150);
+	perguntaGerada.Numero2 = RetornaNumeroAleatorioEntre(1, 150);
 
 	switch (operacao) {
 	case 0:
@@ -468,12 +473,12 @@ Pergunta GeradorDePerguntas() {
 }
 
 Dica GeradorDeDicas(Pergunta pergunta) {
-	const int LimitadorDeOperacao = 2;
 	Dica dica;
+	const int LimitadorDeOperacao = 2;
 	int LimitadorDeNumeros = pergunta.RespostaMatematica - 1;
 	
-	dica.Operacao = rand() % LimitadorDeOperacao;
-	dica.Numero1 = rand() % LimitadorDeNumeros;
+	dica.Operacao = RetornaNumeroAleatorioEntre(0 ,1);
+	dica.Numero1 = RetornaNumeroAleatorioEntre(0, LimitadorDeNumeros);
 
 	if (dica.Operacao == 1) {
 		dica.Operacao = '+';
