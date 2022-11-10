@@ -404,6 +404,7 @@ void MudaCorDoConsole(int codigoCor) {
 
 void Continuar() {
 	printf("\nPressione qualquer tecla para continuar: ");
+	fflush(stdin);
 	getche();
 	system("CLS");
 }
@@ -473,6 +474,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			}
 			else {
 				char respostaLida;
+				fflush(stdin);
 				respostaLida = getche();
 				respostaLida = toupper(respostaLida);
 
