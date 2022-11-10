@@ -303,6 +303,66 @@ void ImprimeEnunciado(Pergunta pergunta) {
 	}
 	else {
 		printf(pergunta.Enunciado);
+		printf("\n\n");
+
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("[");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("A");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("]");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf(" - ");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("%s", pergunta.OpcaoA);
+
+		printf("\n");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("[");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("B");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("]");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf(" - ");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("%s", pergunta.OpcaoB);
+
+		printf("\n");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("[");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("C");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("]");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf(" - ");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("%s", pergunta.OpcaoC);
+
+		printf("\n");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("[");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("D");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("]");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf(" - ");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("%s", pergunta.OpcaoD);
+
+		printf("\n");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("[");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("E");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("]");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf(" - ");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("%s", pergunta.OpcaoE);
 	}
 	printf("\n\nDigite a resposta ou 0 para pular: ");
 }
@@ -363,15 +423,24 @@ void MenuOpcao1(Configuracoes configuracoes) {
 		int tipoDePergunta = RetornaNumeroAleatorioEntre(0,1);
 		bool errou = false;
 		
-		if (configuracoes.PerguntasGeradas && 1 == 1) {
+		if (configuracoes.PerguntasGeradas && tipoDePergunta == 1) {
 			pergunta = GeradorDePerguntas();
 			
 			//pegunta gerada
 			//Funcao que gera a pergunta, manda a pergunta pointer como paramentro 
 		}
 		else {
+			pergunta.Dica = (char*)"Esta é uma dica!";
+			pergunta.Enunciado = (char*)"Este é o enunciado?";
+			pergunta.PerguntaGerada = false;
+			pergunta.OpcaoA = (char*)"Esta é a opção A!";
+			pergunta.OpcaoB = (char*)"Esta é a opção B!";
+			pergunta.OpcaoC = (char*)"Esta é a opção C!";
+			pergunta.OpcaoD = (char*)"Esta é a opção D!";
+			pergunta.OpcaoE = (char*)"Esta é a opção E!";
+			pergunta.Resposta = 'A';
 			//pergunta do arquivo
-			//funcção que pega a pergunta do arquivo, manda a pergunta como pointer 
+			//função que retorna a pergunta do arquivo
 		}
 
 		do {
@@ -404,11 +473,28 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			}
 			else {
 				char respostaLida;
-				//respota do arquivo
+				respostaLida = getche();
+				respostaLida = toupper(respostaLida);
+
+				system("CLS");
+				if (respostaLida == pergunta.Resposta) {
+					errou = false;
+					ImprimeRespostaCerta();
+					break;
+				}
+				else if (respostaLida == '0') {
+
+					break;
+				}
+				else {
+					errou = true;
+					ImprimeRepostaErrada();
+					continue;
+				}
 			}
 		} while (true);
-		//bool pra erros, caso true imprime a dica
 	}
+	system("CLS");
 }
 
 void MenuOpcao2() {
@@ -448,7 +534,7 @@ void MenuOpcao3(Configuracoes *configuracoes) {
 
 Pergunta GeradorDePerguntas() {
 	Pergunta perguntaGerada;
-	int operacao = RetornaNumeroAleatorioEntre(0, 2);
+	int operacao = RetornaNumeroAleatorioEntre(0, 3);
 
 	perguntaGerada.PerguntaGerada = true;
 	perguntaGerada.Numero1 = RetornaNumeroAleatorioEntre(1, 150);
@@ -466,6 +552,16 @@ Pergunta GeradorDePerguntas() {
 	case 2:
 		perguntaGerada.Operacao = '-';
 		perguntaGerada.RespostaMatematica = perguntaGerada.Numero1 - perguntaGerada.Numero2;
+		break;
+	case 3:
+		while (perguntaGerada.Numero1 % perguntaGerada.Numero2 != 0) {
+			perguntaGerada.Numero1 = RetornaNumeroAleatorioEntre(1, 150);
+			perguntaGerada.Numero2 = RetornaNumeroAleatorioEntre(1, 150);
+		}
+
+		perguntaGerada.Operacao = '/';
+		perguntaGerada.RespostaMatematica = perguntaGerada.Numero1 / perguntaGerada.Numero2;
+
 		break;
 	}
 

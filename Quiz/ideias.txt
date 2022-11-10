@@ -1,5 +1,5 @@
 A fazer/corrigir:
-	- Números aleatórios não estão tão aleatórios.
+	- 
 
 Outros:
 	- Usar textos coloridos.
@@ -9,6 +9,8 @@ Outros:
 	- Caso de tempo podemos criar um cadastro de perguntas.
 	- Tentar mudar a cor do Timer de acordo com quantos % do tempo faltam: verde: entre 60% e 100%, amarelo 20% e 59%, vermelho o resto.
 	- Verificar com a neiva se é necessário ficar verificando linha por linha dos arquivos se eles atendem ao schema, teoricamente ninguem deveria mudar eles a não ser o próprio programa, então n teeria como ter erros, e seria bem chato de verificar tudo!
+	- Talvez fazer dicas mais dificeís para as perguntas de matemática
+	- Para as perguntas objetivas: caso erre mais de 2 ou 3 vezes fazer a pontuação ficar igual a 0 e passar a pergunta, pq se n o cara pode so apertar a,b,c,d,e bem rapido
 
 Funcionalidades:
 
@@ -21,21 +23,21 @@ Funcionalidades:
 	- Opção 1 - Iniciar:
 		- Ao iniciar o jogador será levado para as perguntas, este tela deve conter: Cabeçalho, Número da pergunta, pontuação do jogador, perguntas, alternativas(caso não seja uma pergunta matematica), tempo restante.
 		- Deverá ser diposto um timer em tela em segundos, o timer reinicia a cada perguta, seu valor base é igual o que esta na configuração.
-		- Antes de selecionar a pergunta sera randomizado se ela sera uma pergunta do arquivo ou uma pergunta gerada aleatoria.
-		- O jogador poderá responder a pergunta, em casos de perguntas de alternativa ele podera escolher entre (A, B, C, D, E), outra letra resultara em erro em tela
-		- O jogador poderá responder a pergunta, em casos de perguntas geradas ele deverá responder o resultado da equação matemática mostrada em tela
-		- O jogador poderá pular a pergunta, assim ganhando 0 pontos por ela
+		- *Antes de selecionar a pergunta sera randomizado se ela sera uma pergunta do arquivo ou uma pergunta gerada aleatoria.
+		- *O jogador poderá responder a pergunta, em casos de perguntas de alternativa ele podera escolher entre (A, B, C, D, E), outra letra resultara em erro em tela
+		- *O jogador poderá responder a pergunta, em casos de perguntas geradas ele deverá responder o resultado da equação matemática mostrada em tela
+		- O jogador poderá pular a pergunta digitando 0, assim ganhando 0 pontos por ela
 		- O tempo resntante dd quando o jogador acertar a pergunta será a quantidade de pontos que a pergunta somara ao final
-		- O número de perguntas é de acordo com a configuração do jogador
-		- Caso o jogador esteja com a configuração de perguntas matematicas desativada deverão aparecer apenas perguntas do arquivo.
-		- Caso o jogador erre uma tentativa será mostrado uma dica para a resposta.
+		- *O número de perguntas é de acordo com a configuração do jogador
+		- *Caso o jogador esteja com a configuração de perguntas matematicas desativada deverão aparecer apenas perguntas do arquivo.
+		- *Caso o jogador erre uma tentativa será mostrado uma dica para a resposta.
 		- Caso o tempo chegue em 0 a pergunta passa automaticamente.
 		- Ao finalizar a ultima pergunta é mostrado a pontuação do jogador
 		- Caso o jogador queira ele pode informar seu nome para ter sua pontação salva no arquivo do scoreboard.
 		
 		- *Perguntas geradas Matematicamente:
 			- *Serão sorteados dois números inteiros de 1 a 100.
-			- *Será sorteado uma operação matematica(+, -, *). Sem a opção de divisão pois queremos evitar números quebrados.
+			- *Será sorteado uma operação matematica(+, -, *, /). As divisões devem sempre resultar em números inteiros.
 			- *A dica gerada será outra operação que resulte no mesmo resultado 
 				- *Para gerar a dica sera randomizado um número de 0 a 100, e uma operação (+ ou -), sera calculado dessa maneira: numero1 +- numeroaleatorio = resultado, eentão será fisposto na tela: "numero1 +- numero aleatorio = ?"
 			- *Será calculado a respota para o computador comparar com a resposta do jogador
