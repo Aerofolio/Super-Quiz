@@ -8,6 +8,7 @@
 #include <windows.h>
 #include <time.h>
 #include <stdlib.h>
+#include "utils.h"
 
 //Structs
 typedef struct {
@@ -394,27 +395,6 @@ void ImprimeRespostaCerta() {
 
 #pragma endregion
 
-#pragma region Outras Funções
-
-void MudaCorDoConsole(int codigoCor) {
-	HANDLE  hConsole;
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, codigoCor);
-}
-
-void Continuar() {
-	printf("\nPressione qualquer tecla para continuar: ");
-	fflush(stdin);
-	getche();
-	system("CLS");
-}
-
-int RetornaNumeroAleatorioEntre(int min, int max) {
-	max += 1;
-	return min + rand() % (max - (min));
-}
-
-#pragma endregion
 
 #pragma region Funções das opções do menu
 

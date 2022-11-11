@@ -144,6 +144,10 @@
   <ItemGroup>
     <Text Include="ideias.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="impressao.h" />
+    <ClInclude Include="utils.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

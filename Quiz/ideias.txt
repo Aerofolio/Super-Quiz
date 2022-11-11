@@ -1,5 +1,7 @@
 A fazer/corrigir:
-	- 
+	- Mudar dicas para apenas quando o jogador quiser, perder pontos por dica, minimo de pontos 0
+	- Separar telas, telas.h
+	- Usar Enums
 
 Outros:
 	- Usar textos coloridos.
@@ -11,6 +13,7 @@ Outros:
 	- Verificar com a neiva se é necessário ficar verificando linha por linha dos arquivos se eles atendem ao schema, teoricamente ninguem deveria mudar eles a não ser o próprio programa, então n teeria como ter erros, e seria bem chato de verificar tudo!
 	- Talvez fazer dicas mais dificeís para as perguntas de matemática
 	- Para as perguntas objetivas: caso erre mais de 2 ou 3 vezes fazer a pontuação ficar igual a 0 e passar a pergunta, pq se n o cara pode so apertar a,b,c,d,e bem rapido
+	- Usar Enums seria interessante, mas n aprendemos ainda, pedir para a neiva
 
 Funcionalidades:
 
