@@ -5,6 +5,15 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source Files\menus">
+      <UniqueIdentifier>{1b888c4c-deec-4e8a-976f-b90d57105f88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structs">
+      <UniqueIdentifier>{37ba38c5-6242-4a29-b4e8-1f2c26a8a13c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\outros">
+      <UniqueIdentifier>{995b0a11-5bc6-45a0-a2f5-226c31b0907d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Quiz.cpp">
@@ -15,11 +24,29 @@
     <Text Include="ideias.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="menu1.h">
+      <Filter>Source Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="menu2.h">
+      <Filter>Source Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="menu3.h">
+      <Filter>Source Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="sPergunta.h">
+      <Filter>Source Files\structs</Filter>
+    </ClInclude>
+    <ClInclude Include="sConfiguracoes.h">
+      <Filter>Source Files\structs</Filter>
+    </ClInclude>
+    <ClInclude Include="sDica.h">
+      <Filter>Source Files\structs</Filter>
+    </ClInclude>
     <ClInclude Include="impressao.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\outros</Filter>
     </ClInclude>
     <ClInclude Include="utils.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\outros</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

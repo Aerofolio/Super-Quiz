@@ -1,6 +1,5 @@
 A fazer/corrigir:
 	- Mudar dicas para apenas quando o jogador quiser, perder pontos por dica, minimo de pontos 0
-	- Separar telas, telas.h
 	- Usar Enums
 
 Outros:
