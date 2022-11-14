@@ -13,6 +13,7 @@
 
 const int ValorInicialSegundos = 30;
 const int ValorInicialPerguntas = 10;
+const int ValorInicialTentativas = 1;
 const bool ValorInicialPerguntasGeradas = true;
 
 int main()
@@ -20,7 +21,7 @@ int main()
 	setlocale(0, "portuguese");
 	srand(time(NULL));
 	int opcaoMenu;
-	Configuracoes configuracoes = { ValorInicialSegundos, ValorInicialPerguntas, ValorInicialPerguntasGeradas };
+	Configuracoes configuracoes = { ValorInicialSegundos, ValorInicialPerguntas, ValorInicialTentativas, ValorInicialPerguntasGeradas };
 	
 	do {
 		ImprimeMenuPrincipal();

@@ -8,7 +8,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 	for (int i = 0; i < configuracoes.NumeroDePerguntas; i++) {
 		Pergunta pergunta;
 		int tipoDePergunta = RetornaNumeroAleatorioEntre(0, 1);
-		bool errou = false;
+		int tentativas = 0;
 
 		if (configuracoes.PerguntasGeradas && tipoDePergunta == 1) {
 			pergunta = GeradorDePerguntas();
@@ -33,10 +33,12 @@ void MenuOpcao1(Configuracoes configuracoes) {
 		do {
 			ImprimeCabecalho((char*)NomeDoJogo);
 			ImprimePergunta(i);
-			if (errou) {
+			if (tentativas > 0) {
 				ImprimeDica(pergunta);
 			}
 			ImprimeEnunciado(pergunta);
+			ImprimeTentativasRestantes(configuracoes.NumeroDeTentativas - tentativas);
+			ImprimePedirResposta();
 
 			if (pergunta.PerguntaGerada) {
 				int respostaLida;
@@ -44,7 +46,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 				system("CLS");
 
 				if (respostaLida == pergunta.RespostaMatematica) {
-					errou = false;
+					tentativas = 0;
 					ImprimeRespostaCerta();
 					break;
 				}
@@ -53,7 +55,9 @@ void MenuOpcao1(Configuracoes configuracoes) {
 					break;
 				}
 				else {
-					errou = true;
+					tentativas++;
+					if (tentativas > configuracoes.NumeroDeTentativas)
+						break;
 					ImprimeRepostaErrada();
 					continue;
 				}
@@ -66,7 +70,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 
 				system("CLS");
 				if (respostaLida == pergunta.Resposta) {
-					errou = false;
+					tentativas = 0;
 					ImprimeRespostaCerta();
 					break;
 				}
@@ -75,7 +79,9 @@ void MenuOpcao1(Configuracoes configuracoes) {
 					break;
 				}
 				else {
-					errou = true;
+					tentativas++;
+					if (tentativas > configuracoes.NumeroDeTentativas)
+						break;
 					ImprimeRepostaErrada();
 					continue;
 				}

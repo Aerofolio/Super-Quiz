@@ -17,7 +17,7 @@ void ImprimeCabecalho(char titulo[]) {
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("%s", titulo);
 	MudaCorDoConsole(CodigoDeCorTituloECabecalho);
-	printf(" ====================\n\n\n");
+	printf(" ====================\n\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
@@ -80,6 +80,12 @@ void ImprimeErroPerguntas() {
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
+void ImprimeErroTentativas() {
+	MudaCorDoConsole(CodigoCorErro);
+	printf("Opção inválida! Por favor escolha um valor entre 1 e 3.\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
 void ImprimeErroPerguntasMatematicas() {
 	MudaCorDoConsole(CodigoCorErro);
 	printf("Opção inválida! Por favor escolha um valor entre os mostrados abaixo.\n");
@@ -129,6 +135,17 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
 	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("4");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("]");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf(" - Número de tentativas por pergunta: ");
+	MudaCorDoConsole(CodigoCorDestaque);
+	printf("%d tentativas\n\n", configuracoes.NumeroDeTentativas);
+
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("0");
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
@@ -173,6 +190,17 @@ void ImprimeMenu3PerguntasMatematica(bool valorAntigo) {
 	printf("Digite se deseja ver perguntas matemáticas (V/F): ");
 }
 
+void ImprimeMenu3Tentativas(int valorAntigo) {
+	ImprimeCabecalho((char*)"Configurações");
+	printf("Valor atual: ");
+
+	MudaCorDoConsole(CodigoCorDestaque);
+	printf("%d tentativas\n\n", valorAntigo);
+
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Digite o novo valor para as tentativas: ");
+}
+
 void ImprimePergunta(int numeroPergunta) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("Pergunta");
@@ -185,7 +213,7 @@ void ImprimePergunta(int numeroPergunta) {
 
 void ImprimeEnunciado(Pergunta pergunta) {
 	if (pergunta.PerguntaGerada) {
-		printf("%d %c %d = ??", pergunta.Numero1, pergunta.Operacao, pergunta.Numero2);
+		printf("%d %c %d = ??\n\n", pergunta.Numero1, pergunta.Operacao, pergunta.Numero2);
 	}
 	else {
 		printf(pergunta.Enunciado);
@@ -248,9 +276,12 @@ void ImprimeEnunciado(Pergunta pergunta) {
 		MudaCorDoConsole(CodigoCorOpcaoMenu);
 		printf(" - ");
 		MudaCorDoConsole(CodigoDeCorTexto);
-		printf("%s", pergunta.OpcaoE);
+		printf("%s\n\n", pergunta.OpcaoE);
 	}
-	printf("\n\nDigite a resposta ou 0 para pular: ");
+}
+
+void ImprimePedirResposta() {
+	printf("Digite a resposta ou 0 para pular: ");
 }
 
 void ImprimeDica(Pergunta pergunta) {
@@ -275,5 +306,27 @@ void ImprimeRepostaErrada() {
 void ImprimeRespostaCerta() {
 	MudaCorDoConsole(CodigoCorDestaque);
 	printf("Resposta correta! Parabéns!\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
+void ImprimeTentativasRestantes(int tentativasRestantes) {
+	const int CodigoCor0Tentativas = 12;//Vermelho
+	const int CodigoCor1Tentativas = 14;//Amarelo
+	const int CodigoCorPadraoTentativas = 10;//Verde
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Tentativas restantes: ");
+	
+	switch (tentativasRestantes) {
+	case 0:
+		MudaCorDoConsole(CodigoCor0Tentativas);
+		break;
+	case 1:
+		MudaCorDoConsole(CodigoCor1Tentativas);
+		break;
+	default:
+		MudaCorDoConsole(CodigoCorPadraoTentativas);
+	}
+
+	printf("%d\n", tentativasRestantes);
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
