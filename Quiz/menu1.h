@@ -5,19 +5,24 @@
 #include "impressao.h"
 
 void MenuOpcao1(Configuracoes configuracoes) {
+	const int MultiplicadorDePontuacao = 10;
+	const int PontosPorDica = 5;
+	int pontuacao = 0;
+
 	for (int i = 0; i < configuracoes.NumeroDePerguntas; i++) {
 		Pergunta pergunta;
+		Dica dica;
 		int tipoDePergunta = RetornaNumeroAleatorioEntre(0, 1);
 		int tentativas = 0;
+		bool pediuDica = false;
 
 		if (configuracoes.PerguntasGeradas && tipoDePergunta == 1) {
 			pergunta = GeradorDePerguntas();
-
-			//pegunta gerada
-			//Funcao que gera a pergunta, manda a pergunta pointer como paramentro 
+			dica = GeradorDeDicas(pergunta);
 		}
 		else {
-			pergunta.Dica = (char*)"Esta é uma dica!";
+			dica.DicaPerguntaArquivo = (char*)"Esta é uma dica!";
+			dica.PerguntaGerada = false;
 			pergunta.Enunciado = (char*)"Este é o enunciado?";
 			pergunta.PerguntaGerada = false;
 			pergunta.OpcaoA = (char*)"Esta é a opção A!";
@@ -31,13 +36,14 @@ void MenuOpcao1(Configuracoes configuracoes) {
 		}
 
 		do {
+			int tentativasRestantes = configuracoes.NumeroDeTentativas - tentativas;
 			ImprimeCabecalho((char*)NomeDoJogo);
 			ImprimePergunta(i);
-			if (tentativas > 0) {
-				ImprimeDica(pergunta);
+			if (pediuDica) {
+				ImprimeDica(dica);
 			}
 			ImprimeEnunciado(pergunta);
-			ImprimeTentativasRestantes(configuracoes.NumeroDeTentativas - tentativas);
+			ImprimeTentativasRestantes(tentativasRestantes);
 			ImprimePedirResposta();
 
 			if (pergunta.PerguntaGerada) {
@@ -46,13 +52,20 @@ void MenuOpcao1(Configuracoes configuracoes) {
 				system("CLS");
 
 				if (respostaLida == pergunta.RespostaMatematica) {
-					tentativas = 0;
-					ImprimeRespostaCerta();
+					int pontosObtidos = (tentativasRestantes + 1) * MultiplicadorDePontuacao;
+					if(pediuDica)
+						pontosObtidos -= PontosPorDica;
+					ImprimeRespostaCerta(pontosObtidos);
+					pontuacao += pontosObtidos;
 					break;
 				}
 				else if (respostaLida == 0) {
-					//não soma nada a pontuação
+					ImprimePulouPergunta();
 					break;
+				}
+				else if (respostaLida == 1) {
+					pediuDica = true;
+					continue;
 				}
 				else {
 					tentativas++;
@@ -70,18 +83,27 @@ void MenuOpcao1(Configuracoes configuracoes) {
 
 				system("CLS");
 				if (respostaLida == pergunta.Resposta) {
-					tentativas = 0;
-					ImprimeRespostaCerta();
+					int pontosObtidos = (tentativasRestantes + 1) * MultiplicadorDePontuacao;
+					if (pediuDica)
+						pontosObtidos -= PontosPorDica;
+					ImprimeRespostaCerta(pontosObtidos);
+					pontuacao += pontosObtidos;
 					break;
 				}
 				else if (respostaLida == '0') {
-
+					ImprimePulouPergunta();
 					break;
+				}
+				else if (respostaLida == '1') {
+					pediuDica = true;
+					continue;
 				}
 				else {
 					tentativas++;
-					if (tentativas > configuracoes.NumeroDeTentativas)
+					if (tentativas > configuracoes.NumeroDeTentativas) {
+						ImprimeAcabouAsTentativas();
 						break;
+					}
 					ImprimeRepostaErrada();
 					continue;
 				}
@@ -89,4 +111,6 @@ void MenuOpcao1(Configuracoes configuracoes) {
 		} while (true);
 	}
 	system("CLS");
+
+	printf("Pontos totais: %d", pontuacao);
 }

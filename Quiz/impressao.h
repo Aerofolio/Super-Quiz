@@ -281,19 +281,48 @@ void ImprimeEnunciado(Pergunta pergunta) {
 }
 
 void ImprimePedirResposta() {
-	printf("Digite a resposta ou 0 para pular: ");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("0");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("]");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf(" - ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Pular\n");
+
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("1");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("]");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf(" - ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Dica\n");
+
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Resposta");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("]");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf(" - ");
+	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
-void ImprimeDica(Pergunta pergunta) {
+void ImprimeDica(Dica dica) {
 	MudaCorDoConsole(CodigoCorDestaque);
 	printf("Dica: ");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	if (pergunta.PerguntaGerada) {
-		Dica dica = GeradorDeDicas(pergunta);
+	if (dica.PerguntaGerada) {
 		printf("%d %c %d = ??\n\n", dica.Numero1, dica.Operacao, dica.Numero2);
 	}
 	else {
-		printf("%s\n\n", pergunta.Dica);
+		printf("%s\n\n", dica.DicaPerguntaArquivo);
 	}
 }
 
@@ -303,9 +332,33 @@ void ImprimeRepostaErrada() {
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
-void ImprimeRespostaCerta() {
+void ImprimeRespostaCerta(int pontosObtidos) {
 	MudaCorDoConsole(CodigoCorDestaque);
-	printf("Resposta correta! Parabéns!\n");
+	printf("Resposta correta! Parabéns! Você ganhou ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("%d", pontosObtidos);
+	MudaCorDoConsole(CodigoCorDestaque);
+	printf(" pontos.\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
+void ImprimePulouPergunta() {
+	MudaCorDoConsole(CodigoCorErro);
+	printf("Você pulou a pergunta. Você ganhou ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("0");
+	MudaCorDoConsole(CodigoCorErro);
+	printf(" pontos.\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
+void ImprimeAcabouAsTentativas() {
+	MudaCorDoConsole(CodigoCorErro);
+	printf("Acabaram suas tentativas. Você ganhou ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("0");
+	MudaCorDoConsole(CodigoCorErro);
+	printf(" pontos.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 

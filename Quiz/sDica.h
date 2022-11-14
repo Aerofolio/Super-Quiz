@@ -6,6 +6,8 @@ typedef struct {
 	int Numero1;
 	int Numero2;
 	char Operacao;
+	char* DicaPerguntaArquivo;
+	bool PerguntaGerada;
 }Dica;
 
 Dica GeradorDeDicas(Pergunta pergunta) {
@@ -13,6 +15,7 @@ Dica GeradorDeDicas(Pergunta pergunta) {
 	const int LimitadorDeOperacao = 2;
 	int LimitadorDeNumeros = pergunta.RespostaMatematica - 1;
 
+	dica.PerguntaGerada = true;
 	dica.Operacao = RetornaNumeroAleatorioEntre(0, 1);
 	dica.Numero1 = RetornaNumeroAleatorioEntre(0, LimitadorDeNumeros);
 
