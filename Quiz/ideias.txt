@@ -3,7 +3,7 @@ A fazer/corrigir:
 	- Tirar Tempo, deixar apenas tentativas
 	- Tela de fim de jogo, pede nome do jogador
 	- Tirar tudo sbre segundos do sistema
-	- Dicas as vezes vem erradas, provavelmente qual é sorteado - para elas
+	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas
 	- Talvez uma config para desativar dicas
 
 Outros:
