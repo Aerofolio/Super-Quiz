@@ -82,7 +82,7 @@ void ImprimeErroPerguntas() {
 
 void ImprimeErroTentativas() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("Opção inválida! Por favor escolha um valor entre 1 e 3.\n");
+	printf("Opção inválida! Por favor escolha um valor entre 0 e 2.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
@@ -102,10 +102,9 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf(" - Tempo de resposta: ");
+	printf(" - Número de tentativas por pergunta: ");
 	MudaCorDoConsole(CodigoCorDestaque);
-	printf("%d segundos\n\n", configuracoes.SegundosDeResposta);
-
+	printf("%d tentativas\n\n", configuracoes.NumeroDeTentativas);
 
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
@@ -131,17 +130,6 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 		printf("Verdadeiro\n\n");
 	else
 		printf("Falso\n\n");
-
-	MudaCorDoConsole(CodigoCorOpcaoMenu);
-	printf("[");
-	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("4");
-	MudaCorDoConsole(CodigoCorOpcaoMenu);
-	printf("]");
-	MudaCorDoConsole(CodigoDeCorTexto);
-	printf(" - Número de tentativas por pergunta: ");
-	MudaCorDoConsole(CodigoCorDestaque);
-	printf("%d tentativas\n\n", configuracoes.NumeroDeTentativas);
 
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");

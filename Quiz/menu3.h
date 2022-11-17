@@ -2,25 +2,6 @@
 #include "sConfiguracoes.h"
 #include "impressao.h"
 
-void AlteraSegundosDeResposta(Configuracoes* configuracoes) {
-	const int ValorMinimoSegundos = 10;
-	int novoValor;
-
-	system("CLS");
-	do {
-		ImprimeMenu3Segundos(configuracoes->SegundosDeResposta);
-		scanf("%d", &novoValor);
-		system("CLS");
-		if (novoValor < ValorMinimoSegundos) {
-			ImprimeErroSegundos();
-		}
-		else {
-			configuracoes->SegundosDeResposta = novoValor;
-			return;
-		}
-	} while (true);
-}
-
 void AlteraNumeroDePerguntas(Configuracoes* configuracoes) {
 	const int ValorMinimoPerguntas = 5;
 	int novoValor;
@@ -96,7 +77,7 @@ void MenuOpcao3(Configuracoes* configuracoes) {
 		case 0:
 			return;
 		case 1:
-			AlteraSegundosDeResposta(configuracoes);
+			AlteraNumeroDeTentativas(configuracoes);
 			break;
 		case 2:
 			AlteraNumeroDePerguntas(configuracoes);
@@ -104,10 +85,6 @@ void MenuOpcao3(Configuracoes* configuracoes) {
 		case 3:
 			AlteraPerguntasGeradas(configuracoes);
 			break;
-		case 4:
-			AlteraNumeroDeTentativas(configuracoes);
-			break;
-
 		default:
 			ImprimeErroOpcaoInvalidaMenu();
 		}
