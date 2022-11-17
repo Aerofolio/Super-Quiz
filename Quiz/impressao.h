@@ -68,12 +68,6 @@ void ImprimeErroOpcaoInvalidaMenu() {
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
-void ImprimeErroSegundos() {
-	MudaCorDoConsole(CodigoCorErro);
-	printf("Opção inválida! Por favor escolha um valor maior ou igual a 10 segundos.\n");
-	MudaCorDoConsole(CodigoDeCorTexto);
-}
-
 void ImprimeErroPerguntas() {
 	MudaCorDoConsole(CodigoCorErro);
 	printf("Opção inválida! Por favor escolha um valor maior ou igual a 5 perguntas.\n");
@@ -140,17 +134,6 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf(" - Voltar\n\n\n");
 	printf("Digite uma opção para continuar: ");
-}
-
-void ImprimeMenu3Segundos(int valorAntigo) {
-	ImprimeCabecalho((char*)"Configurações");
-	printf("Valor atual: ");
-
-	MudaCorDoConsole(CodigoCorDestaque);
-	printf("%d segundos\n\n", valorAntigo);
-
-	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("Digite o novo valor para os segundos: ");
 }
 
 void ImprimeMenu3Perguntas(int valorAntigo) {

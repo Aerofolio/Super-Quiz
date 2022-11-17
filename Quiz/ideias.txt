@@ -1,13 +1,11 @@
 A fazer/corrigir:
 	- Usar Enums
-	- Tirar Tempo, deixar apenas tentativas
 	- Tela de fim de jogo, pede nome do jogador
-	- Tirar tudo sbre segundos do sistema
 	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas
 	- Talvez uma config para desativar dicas
 	- Mostrar pontos na tela
 	- Tirar divsões por 1
-	- mais tentativas = mais pontos, pensar em uma solução
+	- mais tentativas = mais pontos, pensar em uma solução, talvez mudar o multiplicador, quanto mais tentativas menor o multiplicador, 0t = 2, 1t = 1, 2t = 0.5
 
 Outros:
 	- Usar textos coloridos.

@@ -11,7 +11,6 @@
 #include "menu2.h"
 #include "menu3.h"
 
-const int ValorInicialSegundos = 30;
 const int ValorInicialPerguntas = 10;
 const int ValorInicialTentativas = 1;
 const bool ValorInicialPerguntasGeradas = true;
