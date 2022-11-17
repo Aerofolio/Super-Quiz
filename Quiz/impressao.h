@@ -326,6 +326,16 @@ void ImprimeDica(Dica dica) {
 	}
 }
 
+void ImprimePontuacaoAcumulada(int pontuacaoAcumulada) {
+	const int CodigoCorPontuacao = 10;//Verde
+
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Pontuação: ");
+	MudaCorDoConsole(CodigoCorPontuacao);
+	printf("%d\n", pontuacaoAcumulada);
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
 void ImprimeRepostaErrada() {
 	MudaCorDoConsole(CodigoCorErro);
 	printf("Resposta errada! Tente Novamente.\n");

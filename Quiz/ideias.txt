@@ -5,6 +5,9 @@ A fazer/corrigir:
 	- Tirar tudo sbre segundos do sistema
 	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas
 	- Talvez uma config para desativar dicas
+	- Mostrar pontos na tela
+	- Tirar divsões por 1
+	- mais tentativas = mais pontos, pensar em uma solução
 
 Outros:
 	- Usar textos coloridos.

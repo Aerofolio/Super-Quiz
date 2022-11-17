@@ -44,6 +44,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			}
 			ImprimeEnunciado(pergunta);
 			ImprimeTentativasRestantes(tentativasRestantes);
+			ImprimePontuacaoAcumulada(pontuacao);
 			ImprimePedirResposta();
 
 			if (pergunta.PerguntaGerada) {
