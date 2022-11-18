@@ -20,7 +20,7 @@ int main()
 	setlocale(0, "portuguese");
 	srand(time(NULL));
 	int opcaoMenu;
-	Configuracoes configuracoes = { ValorInicialPerguntas, ValorInicialTentativas, ValorInicialPerguntasGeradas };
+	Configuracoes configuracoes = LeArquivoConfig();
 	
 	do {
 		ImprimeMenuPrincipal();

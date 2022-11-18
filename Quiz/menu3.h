@@ -4,6 +4,7 @@
 
 void AlteraNumeroDePerguntas(Configuracoes* configuracoes) {
 	const int ValorMinimoPerguntas = 5;
+	const int ValorMaximoPerguntas = 99;
 	int novoValor;
 
 	system("CLS");
@@ -11,7 +12,7 @@ void AlteraNumeroDePerguntas(Configuracoes* configuracoes) {
 		ImprimeMenu3Perguntas(configuracoes->NumeroDePerguntas);
 		scanf("%d", &novoValor);
 		system("CLS");
-		if (novoValor < ValorMinimoPerguntas) {
+		if (novoValor < ValorMinimoPerguntas || novoValor > ValorMaximoPerguntas) {
 			ImprimeErroPerguntas();
 		}
 		else {

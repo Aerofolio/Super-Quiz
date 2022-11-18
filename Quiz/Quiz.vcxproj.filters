@@ -14,6 +14,9 @@
     <Filter Include="Source Files\outros">
       <UniqueIdentifier>{995b0a11-5bc6-45a0-a2f5-226c31b0907d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\arquivos">
+      <UniqueIdentifier>{7f2fe8ba-0157-4469-a455-fd99ecdb75ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Quiz.cpp">
@@ -22,6 +25,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ideias.txt" />
+    <Text Include="config.txt">
+      <Filter>Source Files\arquivos</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu1.h">

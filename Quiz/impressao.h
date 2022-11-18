@@ -70,7 +70,7 @@ void ImprimeErroOpcaoInvalidaMenu() {
 
 void ImprimeErroPerguntas() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("Opção inválida! Por favor escolha um valor maior ou igual a 5 perguntas.\n");
+	printf("Opção inválida! Por favor escolha um valor entre 5 e 99.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
