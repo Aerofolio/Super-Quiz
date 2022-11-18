@@ -7,6 +7,9 @@ typedef struct {
 	bool PerguntasGeradas;
 }Configuracoes;
 
+const int ValorInicialPerguntas = 10;
+const int ValorInicialTentativas = 1;
+const bool ValorInicialPerguntasGeradas = true;
 const int LimiteCaracterLinha = 2 + 2;//\n
 const int QuantidadeDeConfigs = 3;
 const char* NomeDoArquivo = "config.txt";
@@ -17,6 +20,7 @@ Configuracoes LeArquivoConfig() {
 	int configsArray[QuantidadeDeConfigs];
 
 	//verificiar existencia do arquivo, se n existiar criar um com configs padrão
+	//testar se o arquivo existe
 	config = fopen(NomeDoArquivo , "r");
 
 	for (int i = 0; i < QuantidadeDeConfigs; i++) {
