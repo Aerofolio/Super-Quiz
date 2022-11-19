@@ -3,19 +3,15 @@ A fazer/corrigir:
 	- Tela de fim de jogo, pede nome do jogador
 	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas
 	- mais tentativas = mais pontos, pensar em uma solução, talvez mudar o multiplicador, quanto mais tentativas menor o multiplicador, 0t = 2, 1t = 1, 2t = 0.5, multiplicador para as dicas desativadas tambem
+	- Leitura do arquivo de perguntas
+	- todo o Menu opção 2
 
 Outros:
-	- Usar textos coloridos.
 	- Decidir nome do jogo.
 	- Decidir estilos do menu.
-	- Todas as telas possuirão cabeçalho.
 	- Caso de tempo podemos criar um cadastro de perguntas.
-	- Tentar mudar a cor do Timer de acordo com quantos % do tempo faltam: verde: entre 60% e 100%, amarelo 20% e 59%, vermelho o resto.
-	- Verificar com a neiva se é necessário ficar verificando linha por linha dos arquivos se eles atendem ao schema, teoricamente ninguem deveria mudar eles a não ser o próprio programa, então n teeria como ter erros, e seria bem chato de verificar tudo!
-	- Talvez fazer dicas mais dificeís para as perguntas de matemática
-	- Para as perguntas objetivas: caso erre mais de 2 ou 3 vezes fazer a pontuação ficar igual a 0 e passar a pergunta, pq se n o cara pode so apertar a,b,c,d,e bem rapido
 
-Funcionalidades:
+Funcionalidades: *Desatualizado*
 
 	- *Menu Principal:
 		- *Deverá conter 4 opções: 1 - Iniciar, 2 - Scoreboard, 3 - Configurações, 0 - Sair
