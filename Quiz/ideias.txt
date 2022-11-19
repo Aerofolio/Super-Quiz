@@ -2,8 +2,7 @@ A fazer/corrigir:
 	- Usar Enums
 	- Tela de fim de jogo, pede nome do jogador
 	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas
-	- Talvez uma config para desativar dicas, aumentar multiplicador
-	- mais tentativas = mais pontos, pensar em uma solução, talvez mudar o multiplicador, quanto mais tentativas menor o multiplicador, 0t = 2, 1t = 1, 2t = 0.5
+	- mais tentativas = mais pontos, pensar em uma solução, talvez mudar o multiplicador, quanto mais tentativas menor o multiplicador, 0t = 2, 1t = 1, 2t = 0.5, multiplicador para as dicas desativadas tambem
 
 Outros:
 	- Usar textos coloridos.

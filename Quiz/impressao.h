@@ -6,10 +6,14 @@
 
 const char* NomeDoJogo = "Jogo do Milhão";
 const int CodigoDeCorTexto = 15; //Branco
+const int CodigoDeCorTextoOpaco = 7; //Branco Opaco
 const int CodigoDeCorTituloECabecalho = 9; //Azul
 const int CodigoCorOpcaoMenu = 9; //Azul
+const int CodigoCorOpcaoMenuOpaco = 1; //Azul Opaco
 const int CodigoCorErro = 12; //Vermelho
+const int CodigoCorErroOpaco = 4; //Vermelho Opaco
 const int CodigoCorDestaque = 10;//Verde
+
 
 void ImprimeCabecalho(char titulo[]) {
 	MudaCorDoConsole(CodigoDeCorTituloECabecalho);
@@ -80,9 +84,15 @@ void ImprimeErroTentativas() {
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
-void ImprimeErroPerguntasMatematicas() {
+void ImprimeErroPerguntasVerdadeiroEFalso() {
 	MudaCorDoConsole(CodigoCorErro);
 	printf("Opção inválida! Por favor escolha um valor entre os mostrados abaixo.\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
+void ImprimeErroDicasDesativadas() {
+	MudaCorDoConsole(CodigoCorErro);
+	printf("Opção inválida! As dicas estão desativadas, caso queira mudar isso acesse o menu de configurações.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
@@ -128,6 +138,29 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
 	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("4");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("]");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf(" - Ativar dicas: ");
+	MudaCorDoConsole(CodigoCorDestaque);
+	if (configuracoes.DicasAtivadas)
+		printf("Verdadeiro\n\n");
+	else
+		printf("Falso\n\n");
+
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("5");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("]");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf(" - Voltar as configurações para o padrão\n\n");
+
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("0");
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
@@ -159,6 +192,20 @@ void ImprimeMenu3PerguntasMatematica(bool valorAntigo) {
 
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("Digite se deseja ver perguntas matemáticas (V/F): ");
+}
+
+void ImprimeMenu3DicasAtivadas(bool valorAntigo) {
+	ImprimeCabecalho((char*)"Configurações");
+	printf("Valor atual: ");
+
+	MudaCorDoConsole(CodigoCorDestaque);
+	if (valorAntigo)
+		printf("Verdadeiro\n\n");
+	else
+		printf("Falso\n\n");
+
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Digite se deseja habilitar as dicas (V/F): ");
 }
 
 void ImprimeMenu3Tentativas(int valorAntigo) {
@@ -251,7 +298,7 @@ void ImprimeEnunciado(Pergunta pergunta) {
 	}
 }
 
-void ImprimePedirResposta() {
+void ImprimePedirResposta(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
 	MudaCorDoConsole(CodigoDeCorTexto);
@@ -263,16 +310,30 @@ void ImprimePedirResposta() {
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("Pular\n");
 
-	MudaCorDoConsole(CodigoCorOpcaoMenu);
-	printf("[");
-	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("1");
-	MudaCorDoConsole(CodigoCorOpcaoMenu);
-	printf("]");
-	MudaCorDoConsole(CodigoCorOpcaoMenu);
-	printf(" - ");
-	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("Dica\n");
+	if (configuracoes.DicasAtivadas) {
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("[");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("1");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf("]");
+		MudaCorDoConsole(CodigoCorOpcaoMenu);
+		printf(" - ");
+		MudaCorDoConsole(CodigoDeCorTexto);
+		printf("Dica\n");
+	}
+	else {
+		MudaCorDoConsole(CodigoCorOpcaoMenuOpaco);
+		printf("[");
+		MudaCorDoConsole(CodigoCorErroOpaco);
+		printf("1");
+		MudaCorDoConsole(CodigoCorOpcaoMenuOpaco);
+		printf("]");
+		MudaCorDoConsole(CodigoCorOpcaoMenuOpaco);
+		printf(" - ");
+		MudaCorDoConsole(CodigoDeCorTextoOpaco);
+		printf("Dica\n");
+	}
 
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
@@ -303,7 +364,7 @@ void ImprimePontuacaoAcumulada(int pontuacaoAcumulada) {
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("Pontuação: ");
 	MudaCorDoConsole(CodigoCorPontuacao);
-	printf("%d\n", pontuacaoAcumulada);
+	printf("%d\n\n", pontuacaoAcumulada);
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 

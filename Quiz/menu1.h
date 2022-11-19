@@ -4,6 +4,8 @@
 #include "utils.h"
 #include "impressao.h"
 
+void RegraPediuDica(bool dicasAtivadas, bool* pediuDica);
+
 void MenuOpcao1(Configuracoes configuracoes) {
 	const int MultiplicadorDePontuacao = 10;
 	const int PontosPorDica = 5;
@@ -39,13 +41,13 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			int tentativasRestantes = configuracoes.NumeroDeTentativas - tentativas;
 			ImprimeCabecalho((char*)NomeDoJogo);
 			ImprimePergunta(i);
-			if (pediuDica) {
+			if (configuracoes.DicasAtivadas && pediuDica) {
 				ImprimeDica(dica);
 			}
 			ImprimeEnunciado(pergunta);
 			ImprimeTentativasRestantes(tentativasRestantes);
 			ImprimePontuacaoAcumulada(pontuacao);
-			ImprimePedirResposta();
+			ImprimePedirResposta(configuracoes);
 
 			if (pergunta.PerguntaGerada) {
 				int respostaLida;
@@ -54,7 +56,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 
 				if (respostaLida == pergunta.RespostaMatematica) {
 					int pontosObtidos = (tentativasRestantes + 1) * MultiplicadorDePontuacao;
-					if(pediuDica)
+					if(configuracoes.DicasAtivadas && pediuDica)
 						pontosObtidos -= PontosPorDica;
 					ImprimeRespostaCerta(pontosObtidos);
 					pontuacao += pontosObtidos;
@@ -65,7 +67,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 					break;
 				}
 				else if (respostaLida == 1) {
-					pediuDica = true;
+					RegraPediuDica(configuracoes.DicasAtivadas, &pediuDica);
 					continue;
 				}
 				else {
@@ -85,7 +87,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 				system("CLS");
 				if (respostaLida == pergunta.Resposta) {
 					int pontosObtidos = (tentativasRestantes + 1) * MultiplicadorDePontuacao;
-					if (pediuDica)
+					if (configuracoes.DicasAtivadas && pediuDica)
 						pontosObtidos -= PontosPorDica;
 					ImprimeRespostaCerta(pontosObtidos);
 					pontuacao += pontosObtidos;
@@ -96,7 +98,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 					break;
 				}
 				else if (respostaLida == '1') {
-					pediuDica = true;
+					RegraPediuDica(configuracoes.DicasAtivadas, &pediuDica);
 					continue;
 				}
 				else {
@@ -113,5 +115,14 @@ void MenuOpcao1(Configuracoes configuracoes) {
 	}
 	system("CLS");
 
-	printf("Pontos totais: %d", pontuacao);
+	printf("Pontos totais: %d\n", pontuacao);
+}
+
+void RegraPediuDica(bool dicasAtivadas, bool *pediuDica) {
+	if (dicasAtivadas) {
+		*pediuDica = true;
+	}
+	else {
+		ImprimeErroDicasDesativadas();
+	}
 }

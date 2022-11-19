@@ -1,6 +1,29 @@
 #pragma once
 #include "sConfiguracoes.h"
 #include "impressao.h"
+#include <stdio.h>
+
+void GravaOpcaoAlterada(int novoValor, EnumeradorDeConfiguracoes enumerador) {
+	char linha[LimiteCaracterLinha];
+	FILE *config, *configTemp;
+	config = fopen(NomeDoArquivoConfig, "r");
+	configTemp = fopen(NomeDoArquivoConfigTemp, "w");
+
+	for (int i = 0; i < QuantidadeDeConfigs; i++) {
+		fgets(linha, LimiteCaracterLinha, config);
+		if ((EnumeradorDeConfiguracoes)i == enumerador) {
+			fprintf(configTemp, "%d\n", novoValor);
+		}
+		else {
+			fprintf(configTemp, "%s", linha);
+		}
+	}
+
+	fclose(config);
+	fclose(configTemp);
+	remove(NomeDoArquivoConfig);
+	rename(NomeDoArquivoConfigTemp, NomeDoArquivoConfig);
+}
 
 void AlteraNumeroDePerguntas(Configuracoes* configuracoes) {
 	const int ValorMinimoPerguntas = 5;
@@ -17,6 +40,8 @@ void AlteraNumeroDePerguntas(Configuracoes* configuracoes) {
 		}
 		else {
 			configuracoes->NumeroDePerguntas = novoValor;
+
+			GravaOpcaoAlterada(novoValor, NumeroDePerguntas);
 			return;
 		}
 	} while (true);
@@ -37,6 +62,7 @@ void AlteraNumeroDeTentativas(Configuracoes* configuracoes) {
 		}
 		else {
 			configuracoes->NumeroDeTentativas = novoValor;
+			GravaOpcaoAlterada(novoValor, NumeroDeTentativas);
 			return;
 		}
 	} while (true);
@@ -53,18 +79,41 @@ void AlteraPerguntasGeradas(Configuracoes* configuracoes) {
 		valorLido = toupper(valorLido);
 		system("CLS");
 		if (valorLido != 'V' && valorLido != 'F') {
-			ImprimeErroPerguntasMatematicas();
+			ImprimeErroPerguntasVerdadeiroEFalso();
 		}
 		else {
-			if (valorLido == 'V')
-				configuracoes->PerguntasGeradas = true;
-			else
-				configuracoes->PerguntasGeradas = false;
+			configuracoes->PerguntasGeradas = valorLido == 'V';
+			GravaOpcaoAlterada(valorLido == 'V', PerguntasGeradas);
 			return;
 		}
 	} while (true);
 }
 
+void AlteraDicasAtivadas(Configuracoes* configuracoes) {
+	char valorLido;
+
+	system("CLS");
+	do {
+		ImprimeMenu3DicasAtivadas(configuracoes->DicasAtivadas);
+		fflush(stdin);
+		valorLido = getche();
+		valorLido = toupper(valorLido);
+		system("CLS");
+		if (valorLido != 'V' && valorLido != 'F') {
+			ImprimeErroPerguntasVerdadeiroEFalso();
+		}
+		else {
+			configuracoes->DicasAtivadas = valorLido == 'V';
+			GravaOpcaoAlterada(valorLido == 'V', DicasAtivadas);
+			return;
+		}
+	} while (true);
+}
+
+void AlteraAsConfiguracoesDeVoltaAoPadrao(Configuracoes* configuracoes) {
+	CriaArquivoComConfigsPadrao();
+	*configuracoes = LeArquivoConfig();
+}
 
 void MenuOpcao3(Configuracoes* configuracoes) {
 	int opcaoMenu;
@@ -85,6 +134,12 @@ void MenuOpcao3(Configuracoes* configuracoes) {
 			break;
 		case 3:
 			AlteraPerguntasGeradas(configuracoes);
+			break;
+		case 4:
+			AlteraDicasAtivadas(configuracoes);
+			break;
+		case 5:
+			AlteraAsConfiguracoesDeVoltaAoPadrao(configuracoes);
 			break;
 		default:
 			ImprimeErroOpcaoInvalidaMenu();
