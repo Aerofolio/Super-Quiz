@@ -142,7 +142,6 @@
     <ClCompile Include="Quiz.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="config.txt" />
     <Text Include="ideias.txt" />
   </ItemGroup>
   <ItemGroup>

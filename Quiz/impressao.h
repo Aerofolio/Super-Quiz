@@ -338,12 +338,13 @@ void ImprimePedirResposta(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("Resposta");
+	printf("Enter");
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf(" - ");
 	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Resposta\n");
 }
 
 void ImprimeDica(Dica dica) {
@@ -424,4 +425,30 @@ void ImprimeTentativasRestantes(int tentativasRestantes) {
 
 	printf("%d\n", tentativasRestantes);
 	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
+void ImprimeTelaFimDeJogo(int pontuacao) {
+	ImprimeCabecalho((char*)"Fim de Jogo!");
+
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Pontuação Obtida: ");
+	MudaCorDoConsole(CodigoCorDestaque);
+	printf("%d\n\n", pontuacao);
+
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Enter");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("] - ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Contiunar\n");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("[");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Nome");
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("] - ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("Digite seu nome para salvar sua pontuação e pressione enter\n");
 }

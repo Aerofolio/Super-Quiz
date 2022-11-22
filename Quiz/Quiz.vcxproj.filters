@@ -25,9 +25,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ideias.txt" />
-    <Text Include="config.txt">
-      <Filter>Source Files\arquivos</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu1.h">

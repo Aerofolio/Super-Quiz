@@ -5,11 +5,13 @@ A fazer/corrigir:
 	- mais tentativas = mais pontos, pensar em uma solução, talvez mudar o multiplicador, quanto mais tentativas menor o multiplicador, 0t = 2, 1t = 1, 2t = 0.5, multiplicador para as dicas desativadas tambem
 	- Leitura do arquivo de perguntas
 	- todo o Menu opção 2
+	-
 
 Outros:
 	- Decidir nome do jogo.
 	- Decidir estilos do menu.
 	- Caso de tempo podemos criar um cadastro de perguntas.
+	- Caso de tempo podemos vazer um esquema pra salvar o jogo de onte parou, nesse caso adicionar um botão de sair jogo no meio, e um no menu de ocntinuar o jogo de onde parou
 
 Funcionalidades: *Desatualizado*
 

@@ -3,12 +3,15 @@
 #include "sPergunta.h"
 #include "utils.h"
 #include "impressao.h"
+#include <stdio.h>
 
 void RegraPediuDica(bool dicasAtivadas, bool* pediuDica);
 
 void MenuOpcao1(Configuracoes configuracoes) {
 	const int MultiplicadorDePontuacao = 10;
 	const int PontosPorDica = 5;
+	const int LimiteCaracterNomeDoJogador = 50;
+	char* nomeDoJogador = (char*)"teste123";
 	int pontuacao = 0;
 
 	for (int i = 0; i < configuracoes.NumeroDePerguntas; i++) {
@@ -113,9 +116,15 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			}
 		} while (true);
 	}
-	system("CLS");
 
-	printf("Pontos totais: %d\n", pontuacao);
+	//fim do numero de perguntas = fim de jogo
+	system("CLS");
+	do {
+		ImprimeTelaFimDeJogo(pontuacao);
+		break;
+		//gets para ler o nome do jogador, se for só "" continuar - n registra nome no arquivo
+	}while(true);
+	//printf("Pontos totais: %d\n", pontuacao);
 }
 
 void RegraPediuDica(bool dicasAtivadas, bool *pediuDica) {
