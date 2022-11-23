@@ -438,7 +438,7 @@ void ImprimeTelaFimDeJogo(int pontuacao) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("Enter");
+	printf("0");
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("] - ");
 	MudaCorDoConsole(CodigoDeCorTexto);
