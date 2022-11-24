@@ -37,6 +37,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			pergunta.Resposta = 'A';
 			//pergunta do arquivo
 			//função que retorna a pergunta do arquivo
+			//ao sortear a pergunta sera necessario escolher um numero entre 0 e o maximo de registros
 		}
 
 		do {

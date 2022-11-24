@@ -9,7 +9,7 @@ A fazer/corrigir:
 
 Outros:
 	- Decidir nome do jogo.
-	- Caso de tempo podemos criar um cadastro de perguntas.
+	- Caso de tempo podemos criar um cadastro de perguntas. Esse é facil, ter bons verificadores para evitar registros errados, sempre colocar a nova pergunta no fim do arquivo
 	- Caso de tempo podemos vazer um esquema pra salvar o jogo de onde parou, nesse caso adicionar um botão de sair jogo no meio, e um no menu de continuar o jogo de onde parou
 
 Funcionalidades: *Desatualizado*
