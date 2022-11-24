@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ideias.txt" />
+    <Text Include="pergutas.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="impressao.h" />
