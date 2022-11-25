@@ -1,9 +1,6 @@
 A fazer/corrigir:
 	- Leitura do arquivo de perguntas
-	- Registrar nome do jogador no arquivo
-		- Ao registrar comparar e sempre colocar o jogador na posição correta em uma lista em ordem decrescente pela quantia de pontos
-		- Arquivo com gitignore, em moldes do arquivo de configuração
-	- Todo o Menu opção 2, depois que tiver o item de cima feito é facil, basta apenas pegar as 10 primeiras linhas e imprimir em tela
+	- Todo o Menu opção 2, basta ler as 10 primeiras linhas e imprimir em tela
 	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas
 	- getchar n pedindo enter, acho que é bem chaato de corrigirkkkk
 
