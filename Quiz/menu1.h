@@ -174,8 +174,11 @@ void RegistrarJogador(char* jogador, int pontuacao) {
 
 			if (!registroInserido && jogadorDaLinha.Pontuacao < pontuacao) {
 				fprintf(arqScoreboardTemp, "%s;%d\n", jogador, pontuacao);
-				i++;
 				registroInserido = true;
+				i++;
+
+				if(!(i < NumeroMaximoDeJogadores))
+					break;
 			}
 			fprintf(arqScoreboardTemp, "%s;%d\n", jogadorDaLinha.NomeDoJogador, jogadorDaLinha.Pontuacao);
 		}
