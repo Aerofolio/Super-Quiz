@@ -153,6 +153,7 @@
     <ClInclude Include="sConfiguracoes.h" />
     <ClInclude Include="sDica.h" />
     <ClInclude Include="sPergunta.h" />
+    <ClInclude Include="sPlayer.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

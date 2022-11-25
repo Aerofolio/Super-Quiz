@@ -3,10 +3,12 @@
 #include "sPergunta.h"
 #include "utils.h"
 #include "impressao.h"
+#include "sPlayer.h"
 #include <stdio.h>
 
 void RegraPediuDica(bool dicasAtivadas, bool* pediuDica);
 int RetornaPontosObtidos(int tentativasRestantes, Configuracoes configuracoes, bool pediuDica);
+void RegistrarJogador(char* jogador, int pontuacao);
 
 void MenuOpcao1(Configuracoes configuracoes) {
 	const int LimiteCaracterNomeDoJogador = 50;
@@ -124,6 +126,8 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			break;
 		}
 		else {
+			strtok(nomeDoJogador, "\n");
+			RegistrarJogador(nomeDoJogador, pontuacao);
 			//registra nome do jogador
 			//remover \n antes de botar o nome no arquivo
 			break;
@@ -131,6 +135,56 @@ void MenuOpcao1(Configuracoes configuracoes) {
 	}while(true);
 
 	system("CLS");
+}
+
+void RegistrarJogador(char* jogador, int pontuacao) {
+	const char* NomeArquivoScoreboard = "scoreboard.txt";
+	const char* NomeArquivoScoreboardTemp = "scoreboardTemp.txt";
+	const int LimiteCaracterLinha = 56;
+	const int NumeroMaximoDeJogadores = 10;
+	const int NumeroDeInformacaoPorLinha = 2;
+	char linhaLida[LimiteCaracterLinha];
+	bool registroInserido = false;
+	FILE* arqScoreboard;
+	FILE* arqScoreboardTemp;
+
+	arqScoreboard = fopen(NomeArquivoScoreboard, "r");
+	arqScoreboardTemp = fopen(NomeArquivoScoreboardTemp, "w");
+	if (!arqScoreboard) {
+		arqScoreboard = fopen(NomeArquivoScoreboard, "w");
+		fprintf(arqScoreboard, "%s;%d\n", jogador, pontuacao);
+	}
+	else {
+		for (int i = 0; i < NumeroMaximoDeJogadores; i++) {
+			fgets(linhaLida, LimiteCaracterLinha, arqScoreboard);
+			if (feof(arqScoreboard))
+				break;
+
+			char* ptr;
+			Player jogadorDaLinha;
+			ptr = strtok(linhaLida, ";");
+			for (int ii = 0; ii < NumeroDeInformacaoPorLinha; ii++) {
+				if (ii == 0)
+					jogadorDaLinha.NomeDoJogador = ptr;
+				else
+					jogadorDaLinha.Pontuacao = atoi(ptr);
+
+				ptr = strtok(NULL, ";");
+			}
+
+			if (!registroInserido && jogadorDaLinha.Pontuacao < pontuacao) {
+				fprintf(arqScoreboardTemp, "%s;%d\n", jogador, pontuacao);
+				i++;
+				registroInserido = true;
+			}
+			fprintf(arqScoreboardTemp, "%s;%d\n", jogadorDaLinha.NomeDoJogador, jogadorDaLinha.Pontuacao);
+		}
+
+	}
+	fclose(arqScoreboard);
+	fclose(arqScoreboardTemp);
+	remove(NomeArquivoScoreboard);
+	rename(NomeArquivoScoreboardTemp, NomeArquivoScoreboard);
 }
 
 void RegraPediuDica(bool dicasAtivadas, bool *pediuDica) {

@@ -52,5 +52,8 @@
     <ClInclude Include="utils.h">
       <Filter>Source Files\outros</Filter>
     </ClInclude>
+    <ClInclude Include="sPlayer.h">
+      <Filter>Source Files\structs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
