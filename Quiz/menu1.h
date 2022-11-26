@@ -151,14 +151,19 @@ void RegistrarJogador(char* jogador, int pontuacao) {
 	arqScoreboard = fopen(NomeArquivoScoreboard, "r");
 	arqScoreboardTemp = fopen(NomeArquivoScoreboardTemp, "w");
 	if (!arqScoreboard) {
-		arqScoreboard = fopen(NomeArquivoScoreboard, "w");
-		fprintf(arqScoreboard, "%s;%d\n", jogador, pontuacao);
+		fprintf(arqScoreboardTemp, "%s;%d\n", jogador, pontuacao);
 	}
 	else {
 		for (int i = 0; i < NumeroMaximoDeJogadores; i++) {
 			fgets(linhaLida, LimiteCaracterLinha, arqScoreboard);
-			if (feof(arqScoreboard))
+
+			if (feof(arqScoreboard)) {
+				if ((i < NumeroMaximoDeJogadores) && !registroInserido) {
+					fprintf(arqScoreboardTemp, "%s;%d\n", jogador, pontuacao);
+				}
+
 				break;
+			}
 
 			char* ptr;
 			Player jogadorDaLinha;
@@ -183,8 +188,8 @@ void RegistrarJogador(char* jogador, int pontuacao) {
 			fprintf(arqScoreboardTemp, "%s;%d\n", jogadorDaLinha.NomeDoJogador, jogadorDaLinha.Pontuacao);
 		}
 
+		fclose(arqScoreboard);
 	}
-	fclose(arqScoreboard);
 	fclose(arqScoreboardTemp);
 	remove(NomeArquivoScoreboard);
 	rename(NomeArquivoScoreboardTemp, NomeArquivoScoreboard);
