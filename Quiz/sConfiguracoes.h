@@ -17,8 +17,8 @@ typedef enum {
 
 const int LimiteCaracterLinha = 2 + 2;
 const int QuantidadeDeConfigs = 4;
-const char* NomeDoArquivoConfig = "config.txt";
-const char* NomeDoArquivoConfigTemp = "configTemp.txt";
+const char* NomeArquivoConfig = "config.txt";
+const char* NomeArquivoConfigTemp = "configTemp.txt";
 
 
 void CriaArquivoComConfigsPadrao() {
@@ -28,7 +28,7 @@ void CriaArquivoComConfigsPadrao() {
 	const bool ValorInicialDicasAtivadas = true;
 
 	FILE* config;
-	config = fopen(NomeDoArquivoConfig, "w");
+	config = fopen(NomeArquivoConfig, "w");
 
 	for (int i = 0; i < QuantidadeDeConfigs; i++) {
 		switch ((EnumeradorDeConfiguracoes)i) {
@@ -55,10 +55,10 @@ Configuracoes LeArquivoConfig() {
 	char linha[LimiteCaracterLinha];
 	int configsArray[QuantidadeDeConfigs];
 
-	config = fopen(NomeDoArquivoConfig, "r");
+	config = fopen(NomeArquivoConfig, "r");
 	if (!config) {
 		CriaArquivoComConfigsPadrao();
-		config = fopen(NomeDoArquivoConfig, "r");
+		config = fopen(NomeArquivoConfig, "r");
 	}
 
 	for (int i = 0; i < QuantidadeDeConfigs; i++) {

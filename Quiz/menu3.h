@@ -6,8 +6,8 @@
 void GravaOpcaoAlterada(int novoValor, EnumeradorDeConfiguracoes enumerador) {
 	char linha[LimiteCaracterLinha];
 	FILE *config, *configTemp;
-	config = fopen(NomeDoArquivoConfig, "r");
-	configTemp = fopen(NomeDoArquivoConfigTemp, "w");
+	config = fopen(NomeArquivoConfig, "r");
+	configTemp = fopen(NomeArquivoConfigTemp, "w");
 
 	for (int i = 0; i < QuantidadeDeConfigs; i++) {
 		fgets(linha, LimiteCaracterLinha, config);
@@ -21,8 +21,8 @@ void GravaOpcaoAlterada(int novoValor, EnumeradorDeConfiguracoes enumerador) {
 
 	fclose(config);
 	fclose(configTemp);
-	remove(NomeDoArquivoConfig);
-	rename(NomeDoArquivoConfigTemp, NomeDoArquivoConfig);
+	remove(NomeArquivoConfig);
+	rename(NomeArquivoConfigTemp, NomeArquivoConfig);
 }
 
 void AlteraNumeroDePerguntas(Configuracoes* configuracoes) {

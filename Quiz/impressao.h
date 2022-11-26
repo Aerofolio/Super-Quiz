@@ -5,7 +5,7 @@
 #include "utils.h"
 #include "sPlayer.h"
 
-const char* NomeDoJogo = "Jogo do Milhão";
+const char* NomeDoJogo = "Super Quiz";
 const char* CabecalhoScoreboard = "Scoreboard";
 const int CodigoDeCorTexto = 15; //Branco
 const int CodigoDeCorTextoOpaco = 7; //Branco Opaco
