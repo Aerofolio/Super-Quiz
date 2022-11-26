@@ -14,6 +14,7 @@ void RegistrarJogador(char* jogador, int pontuacao);
 void MenuOpcao1(Configuracoes configuracoes) {
 	const int LimiteCaracterNomeDoJogador = 50;
 	char nomeDoJogador[LimiteCaracterNomeDoJogador];
+	int perguntasSorteadas[99], numeroDePerguntasLidasDoArquivo = 0;//revisar
 	int pontuacao = 0;
 
 	for (int i = 0; i < configuracoes.NumeroDePerguntas; i++) {
@@ -28,20 +29,10 @@ void MenuOpcao1(Configuracoes configuracoes) {
 			dica = GeradorDeDicas(pergunta);
 		}
 		else {
-			dica.DicaPerguntaArquivo = (char*)"Esta é uma dica!";
+			pergunta = RetornaPerguntaDoArquivo(perguntasSorteadas, &numeroDePerguntasLidasDoArquivo);
+
+			dica.DicaPerguntaArquivo = pergunta.DicaPerguntaArquivo;//leve gambiarra pra pegar a dica sem ser pro referencia
 			dica.PerguntaGerada = false;
-			pergunta.Enunciado = (char*)"Este é o enunciado?";
-			pergunta.PerguntaGerada = false;
-			pergunta.OpcaoA = (char*)"Esta é a opção A!";
-			pergunta.OpcaoB = (char*)"Esta é a opção B!";
-			pergunta.OpcaoC = (char*)"Esta é a opção C!";
-			pergunta.OpcaoD = (char*)"Esta é a opção D!";
-			pergunta.OpcaoE = (char*)"Esta é a opção E!";
-			pergunta.Resposta = 'A';
-			//pergunta do arquivo
-			//função que retorna a pergunta do arquivo
-			//ao sortear a pergunta sera necessario escolher um numero entre 0 e o maximo de registros
-			//cuidar para não pegar duas perguntas iguais na mesma rodada
 		}
 
 		do {
