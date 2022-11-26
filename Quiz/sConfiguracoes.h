@@ -15,7 +15,7 @@ typedef enum {
 	DicasAtivadas = 3
 }EnumeradorDeConfiguracoes;
 
-const int LimiteCaracterLinha = 2 + 2;//maior campo = numero de perguntas é limitado a 99 logo 2 caracteres do 99 + 2 caracteres do /n
+const int LimiteCaracterLinha = 2 + 2;
 const int QuantidadeDeConfigs = 4;
 const char* NomeDoArquivoConfig = "config.txt";
 const char* NomeDoArquivoConfigTemp = "configTemp.txt";

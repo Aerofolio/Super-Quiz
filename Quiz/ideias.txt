@@ -1,7 +1,6 @@
 A fazer/corrigir:
 	- Leitura do arquivo de perguntas
-	- Todo o Menu opção 2, basta ler as 10 primeiras linhas e imprimir em tela
-	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas
+	- Dicas as vezes vem erradas, provavelmente quando é sorteado - para elas, parece que em casos de *
 	- getchar n pedindo enter, acho que é bem chaato de corrigirkkkk
 
 Outros:

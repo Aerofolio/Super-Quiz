@@ -118,19 +118,16 @@ void MenuOpcao1(Configuracoes configuracoes) {
 		ImprimeTelaFimDeJogo(pontuacao);
 
 		fgets(nomeDoJogador, LimiteCaracterNomeDoJogador, stdin);
-		if (strcmp(nomeDoJogador, "\n") == 0) {//erro no buffer devido ao uso de scanf
+		if (strcmp(nomeDoJogador, "\n") == 0) {
 			continue;
 		}
 		else if (strcmp(nomeDoJogador, "0\n") == 0) {
-			//volta ao menu principal
 
 			break;
 		}
 		else {
 			strtok(nomeDoJogador, "\n");
 			RegistrarJogador(nomeDoJogador, pontuacao);
-			//registra nome do jogador
-			//remover \n antes de botar o nome no arquivo
 			break;
 		}
 	}while(true);
