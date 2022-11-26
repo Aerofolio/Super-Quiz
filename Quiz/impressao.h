@@ -3,8 +3,10 @@
 #include "sDica.h"
 #include "sPergunta.h"
 #include "utils.h"
+#include "sPlayer.h"
 
 const char* NomeDoJogo = "Jogo do Milhão";
+const char* CabecalhoScoreboard = "Scoreboard";
 const int CodigoDeCorTexto = 15; //Branco
 const int CodigoDeCorTextoOpaco = 7; //Branco Opaco
 const int CodigoDeCorTituloECabecalho = 9; //Azul
@@ -96,6 +98,12 @@ void ImprimeErroDicasDesativadas() {
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
+void ImprimeErroSemRegistrosScoreboard() {
+	MudaCorDoConsole(CodigoCorErro);
+	printf("Parece que ninguem registrou seu nome aqui ainda!\nPara ter seu nome entre os melhores finalize uma partida e insira seu nome.\n");
+	MudaCorDoConsole(CodigoDeCorTexto);
+}
+
 void ImprimeMenu3(Configuracoes configuracoes) {
 	ImprimeCabecalho((char*)"Configurações");
 
@@ -169,6 +177,13 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	printf("Digite uma opção para continuar: ");
 }
 
+void ImprimeInformacaoSobrePontos() {
+	MudaCorDoConsole(CodigoCorErro);
+	printf("Atenção! ");
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf("A alteração dessa opção mudará os multiplicadores de pontos.\n\n");
+}
+
 void ImprimeMenu3Perguntas(int valorAntigo) {
 	ImprimeCabecalho((char*)"Configurações");
 	printf("Valor atual: ");
@@ -210,6 +225,7 @@ void ImprimeMenu3DicasAtivadas(bool valorAntigo) {
 
 void ImprimeMenu3Tentativas(int valorAntigo) {
 	ImprimeCabecalho((char*)"Configurações");
+	ImprimeInformacaoSobrePontos();
 	printf("Valor atual: ");
 
 	MudaCorDoConsole(CodigoCorDestaque);
@@ -451,4 +467,41 @@ void ImprimeTelaFimDeJogo(int pontuacao) {
 	printf("] - ");
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("Digite seu nome para salvar sua pontuação e pressione enter\n");
+}
+
+void ImprimeLinhaDoScoreboard(Player jogador, int posicao) {
+	const int InicioNumerosVerdes = 3;
+	const int InicioNumerosVermelhos = 7;
+	const int CodigoCorTop3 = 10;//Verde
+	const int CodigoCorPadrao = 14;//Amarelo
+	const int CodigoCorPiores3 = 12;//Vermelho
+
+	if (posicao <= InicioNumerosVerdes) {
+		MudaCorDoConsole(CodigoCorTop3);
+	}
+	else if (posicao <= InicioNumerosVermelhos) {
+		MudaCorDoConsole(CodigoCorPadrao);
+	}
+	else {
+		MudaCorDoConsole(CodigoCorPiores3);
+	}
+
+	printf("%dº", posicao);
+	MudaCorDoConsole(CodigoDeCorTexto);
+	printf(": %s ", jogador.NomeDoJogador);
+	MudaCorDoConsole(CodigoCorOpcaoMenu);
+	printf("-");
+
+	if (posicao <= InicioNumerosVerdes) {
+		MudaCorDoConsole(CodigoCorTop3);
+	}
+	else if (posicao <= InicioNumerosVermelhos) {
+		MudaCorDoConsole(CodigoCorPadrao);
+	}
+	else {
+		MudaCorDoConsole(CodigoCorPiores3);
+	}
+
+	printf(" %d\n", jogador.Pontuacao);
+	MudaCorDoConsole(CodigoDeCorTexto);
 }

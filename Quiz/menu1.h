@@ -4,6 +4,7 @@
 #include "utils.h"
 #include "impressao.h"
 #include "sPlayer.h"
+#include "menu2.h"
 #include <stdio.h>
 
 void RegraPediuDica(bool dicasAtivadas, bool* pediuDica);
@@ -138,12 +139,7 @@ void MenuOpcao1(Configuracoes configuracoes) {
 }
 
 void RegistrarJogador(char* jogador, int pontuacao) {
-	const char* NomeArquivoScoreboard = "scoreboard.txt";
-	const char* NomeArquivoScoreboardTemp = "scoreboardTemp.txt";
-	const int LimiteCaracterLinha = 56;
-	const int NumeroMaximoDeJogadores = 10;
-	const int NumeroDeInformacaoPorLinha = 2;
-	char linhaLida[LimiteCaracterLinha];
+	char linhaLida[LimiteCaracterLinhaScoreboard];
 	bool registroInserido = false;
 	FILE* arqScoreboard;
 	FILE* arqScoreboardTemp;
@@ -154,11 +150,11 @@ void RegistrarJogador(char* jogador, int pontuacao) {
 		fprintf(arqScoreboardTemp, "%s;%d\n", jogador, pontuacao);
 	}
 	else {
-		for (int i = 0; i < NumeroMaximoDeJogadores; i++) {
-			fgets(linhaLida, LimiteCaracterLinha, arqScoreboard);
+		for (int i = 0; i < NumeroMaximoDeJogadoresScoreboard; i++) {
+			fgets(linhaLida, LimiteCaracterLinhaScoreboard, arqScoreboard);
 
 			if (feof(arqScoreboard)) {
-				if ((i < NumeroMaximoDeJogadores) && !registroInserido) {
+				if ((i < NumeroMaximoDeJogadoresScoreboard) && !registroInserido) {
 					fprintf(arqScoreboardTemp, "%s;%d\n", jogador, pontuacao);
 				}
 
@@ -168,7 +164,7 @@ void RegistrarJogador(char* jogador, int pontuacao) {
 			char* ptr;
 			Player jogadorDaLinha;
 			ptr = strtok(linhaLida, ";");
-			for (int ii = 0; ii < NumeroDeInformacaoPorLinha; ii++) {
+			for (int ii = 0; ii < NumeroDeInformacaoPorLinhaScoreboard; ii++) {
 				if (ii == 0)
 					jogadorDaLinha.NomeDoJogador = ptr;
 				else
@@ -182,7 +178,7 @@ void RegistrarJogador(char* jogador, int pontuacao) {
 				registroInserido = true;
 				i++;
 
-				if(!(i < NumeroMaximoDeJogadores))
+				if(!(i < NumeroMaximoDeJogadoresScoreboard))
 					break;
 			}
 			fprintf(arqScoreboardTemp, "%s;%d\n", jogadorDaLinha.NomeDoJogador, jogadorDaLinha.Pontuacao);
