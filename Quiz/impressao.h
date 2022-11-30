@@ -55,7 +55,7 @@ void ImprimeMenuPrincipal() {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf(" - ConfiguraÃ§Ãµes\n\n");
+	printf(" - Configurações\n\n");
 
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
@@ -65,47 +65,47 @@ void ImprimeMenuPrincipal() {
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf(" - Sair\n\n\n");
-	printf("Digite uma opÃ§Ã£o para continuar: ");
+	printf("Digite uma opção para continuar: ");
 }
 
 void ImprimeErroOpcaoInvalidaMenu() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("OpÃ§Ã£o invÃ¡lida! Por favor escolha uma opÃ§Ã£o disponÃ­vel.\n");
+	printf("Opção inválida! Por favor escolha uma opção disponível.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
 void ImprimeErroPerguntas() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("OpÃ§Ã£o invÃ¡lida! Por favor escolha um valor entre 5 e 99.\n");
+	printf("Opção inválida! Por favor escolha um valor entre 5 e 99.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
 void ImprimeErroTentativas() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("OpÃ§Ã£o invÃ¡lida! Por favor escolha um valor entre 0 e 2.\n");
+	printf("Opção inválida! Por favor escolha um valor entre 0 e 2.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
 void ImprimeErroPerguntasVerdadeiroEFalso() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("OpÃ§Ã£o invÃ¡lida! Por favor escolha um valor entre os mostrados abaixo.\n");
+	printf("Opção inválida! Por favor escolha um valor entre os mostrados abaixo.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
 void ImprimeErroDicasDesativadas() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("OpÃ§Ã£o invÃ¡lida! As dicas estÃ£o desativadas, caso queira mudar isso acesse o menu de configuraÃ§Ãµes.\n");
+	printf("Opção inválida! As dicas estão desativadas, caso queira mudar isso acesse o menu de configurações.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
 void ImprimeErroSemRegistrosScoreboard() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("Parece que ninguem registrou seu nome aqui ainda!\nPara ter seu nome entre os melhores finalize uma partida e insira seu nome.\n");
+	printf("Parece que ninguém registrou seu nome aqui ainda!\nPara ter seu nome entre os melhores finalize uma partida e insira seu nome.\n");
 	MudaCorDoConsole(CodigoDeCorTexto);
 }
 
 void ImprimeMenu3(Configuracoes configuracoes) {
-	ImprimeCabecalho((char*)"ConfiguraÃ§Ãµes");
+	ImprimeCabecalho((char*)"Configurações");
 
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
@@ -114,7 +114,7 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf(" - NÃºmero de tentativas por pergunta: ");
+	printf(" - Número de tentativas por pergunta: ");
 	MudaCorDoConsole(CodigoCorDestaque);
 	printf("%d tentativas\n\n", configuracoes.NumeroDeTentativas);
 
@@ -125,7 +125,7 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf(" - NÃºmero de perguntas: ");
+	printf(" - Número de perguntas: ");
 	MudaCorDoConsole(CodigoCorDestaque);
 	printf("%d perguntas\n\n", configuracoes.NumeroDePerguntas);
 
@@ -136,7 +136,7 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf(" - Ativar perguntas matemÃ¡ticas: ");
+	printf(" - Ativar perguntas matemáticas: ");
 	MudaCorDoConsole(CodigoCorDestaque);
 	if (configuracoes.PerguntasGeradas)
 		printf("Verdadeiro\n\n");
@@ -164,7 +164,7 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf(" - Voltar as configuraÃ§Ãµes para o padrÃ£o\n\n");
+	printf(" - Voltar as configurações para o padrão\n\n");
 
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("[");
@@ -174,29 +174,29 @@ void ImprimeMenu3(Configuracoes configuracoes) {
 	printf("]");
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf(" - Voltar\n\n\n");
-	printf("Digite uma opÃ§Ã£o para continuar: ");
+	printf("Digite uma opção para continuar: ");
 }
 
 void ImprimeInformacaoSobrePontos() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("AtenÃ§Ã£o! ");
+	printf("Atenção! ");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("A alteraÃ§Ã£o dessa opÃ§Ã£o mudarÃ¡ os multiplicadores de pontos.\n\n");
+	printf("A alteração dessa opção mudará os multiplicadores de pontos.\n\n");
 }
 
 void ImprimeMenu3Perguntas(int valorAntigo) {
-	ImprimeCabecalho((char*)"ConfiguraÃ§Ãµes");
+	ImprimeCabecalho((char*)"Configurações");
 	printf("Valor atual: ");
 
 	MudaCorDoConsole(CodigoCorDestaque);
 	printf("%d perguntas\n\n", valorAntigo);
 
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("Digite o novo valor para o nÃºmero de perguntas: ");
+	printf("Digite o novo valor para o número de perguntas: ");
 }
 
 void ImprimeMenu3PerguntasMatematica(bool valorAntigo) {
-	ImprimeCabecalho((char*)"ConfiguraÃ§Ãµes");
+	ImprimeCabecalho((char*)"Configurações");
 	printf("Valor atual: ");
 
 	MudaCorDoConsole(CodigoCorDestaque);
@@ -206,11 +206,11 @@ void ImprimeMenu3PerguntasMatematica(bool valorAntigo) {
 		printf("Falso\n\n");
 
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("Digite se deseja ver perguntas matemÃ¡ticas (V/F): ");
+	printf("Digite se deseja ver perguntas matemáticas (V/F): ");
 }
 
 void ImprimeMenu3DicasAtivadas(bool valorAntigo) {
-	ImprimeCabecalho((char*)"ConfiguraÃ§Ãµes");
+	ImprimeCabecalho((char*)"Configurações");
 	printf("Valor atual: ");
 
 	MudaCorDoConsole(CodigoCorDestaque);
@@ -224,7 +224,7 @@ void ImprimeMenu3DicasAtivadas(bool valorAntigo) {
 }
 
 void ImprimeMenu3Tentativas(int valorAntigo) {
-	ImprimeCabecalho((char*)"ConfiguraÃ§Ãµes");
+	ImprimeCabecalho((char*)"Configurações");
 	ImprimeInformacaoSobrePontos();
 	printf("Valor atual: ");
 
@@ -368,7 +368,12 @@ void ImprimeDica(Dica dica) {
 	printf("Dica: ");
 	MudaCorDoConsole(CodigoDeCorTexto);
 	if (dica.PerguntaGerada) {
-		printf("%d %c %d = ??\n\n", dica.Numero1, dica.Operacao, dica.Numero2);
+		if (dica.Numero2 > dica.Numero1) {
+			printf("%d %c %d = ??\n\n", dica.Numero2, dica.Operacao, dica.Numero1);
+		}
+		else {
+			printf("%d %c %d = ??\n\n", dica.Numero1, dica.Operacao, dica.Numero2);
+		}
 	}
 	else {
 		printf("%s\n\n", dica.DicaPerguntaArquivo);
@@ -379,7 +384,7 @@ void ImprimePontuacaoAcumulada(int pontuacaoAcumulada) {
 	const int CodigoCorPontuacao = 10;//Verde
 
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("PontuaÃ§Ã£o: ");
+	printf("Pontuação: ");
 	MudaCorDoConsole(CodigoCorPontuacao);
 	printf("%d\n\n", pontuacaoAcumulada);
 	MudaCorDoConsole(CodigoDeCorTexto);
@@ -393,7 +398,7 @@ void ImprimeRepostaErrada() {
 
 void ImprimeRespostaCerta(int pontosObtidos) {
 	MudaCorDoConsole(CodigoCorDestaque);
-	printf("Resposta correta! ParabÃ©ns! VocÃª ganhou ");
+	printf("Resposta correta! Parabéns! Você ganhou ");
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("%d", pontosObtidos);
 	MudaCorDoConsole(CodigoCorDestaque);
@@ -403,7 +408,7 @@ void ImprimeRespostaCerta(int pontosObtidos) {
 
 void ImprimePulouPergunta() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("VocÃª pulou a pergunta. VocÃª ganhou ");
+	printf("Você pulou a pergunta. Você ganhou ");
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("0");
 	MudaCorDoConsole(CodigoCorErro);
@@ -413,7 +418,7 @@ void ImprimePulouPergunta() {
 
 void ImprimeAcabouAsTentativas() {
 	MudaCorDoConsole(CodigoCorErro);
-	printf("Acabaram suas tentativas. VocÃª ganhou ");
+	printf("Acabaram suas tentativas. Você ganhou ");
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf("0");
 	MudaCorDoConsole(CodigoCorErro);
@@ -447,7 +452,7 @@ void ImprimeTelaFimDeJogo(int pontuacao) {
 	ImprimeCabecalho((char*)"Fim de Jogo!");
 
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("PontuaÃ§Ã£o Obtida: ");
+	printf("Pontuação Obtida: ");
 	MudaCorDoConsole(CodigoCorDestaque);
 	printf("%d\n\n", pontuacao);
 
@@ -466,7 +471,7 @@ void ImprimeTelaFimDeJogo(int pontuacao) {
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
 	printf("] - ");
 	MudaCorDoConsole(CodigoDeCorTexto);
-	printf("Digite seu nome para salvar sua pontuaÃ§Ã£o e pressione enter\n");
+	printf("Digite seu nome para salvar sua pontuação e pressione enter\n");
 }
 
 void ImprimeLinhaDoScoreboard(Player jogador, int posicao) {
@@ -486,7 +491,7 @@ void ImprimeLinhaDoScoreboard(Player jogador, int posicao) {
 		MudaCorDoConsole(CodigoCorPiores3);
 	}
 
-	printf("%dÂº", posicao);
+	printf("%dº", posicao);
 	MudaCorDoConsole(CodigoDeCorTexto);
 	printf(": %s ", jogador.NomeDoJogador);
 	MudaCorDoConsole(CodigoCorOpcaoMenu);
