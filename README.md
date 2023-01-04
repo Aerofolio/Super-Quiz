@@ -1,4 +1,4 @@
-# Quiz
+# Super Quiz
   Este programa é um jogo em formato de quiz desenvolvido na linguagem C++ por Paulo Bodaneze Reva e Gustavo Weber. O programa conta com um sistema de leitura de perguntas, sistema de pontos, geração de perguntas aleatórias, entre outras funcionalidades.
 
 
